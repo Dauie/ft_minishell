@@ -1,19 +1,26 @@
-NAME = minishelltest.a
+NAME = minishell
 
 CC = gcc
 
-OBJ = *.o
+CCFLAGS = -Wall -Werror -Wextra -g
 
-ARCHIVE = ar rc
+SRC = src/minishell.c src/ms_parse.c
 
-INDEX = ranlib
+OBJ = $(SRC:.c=.o)
 
-HEADER =
+HEADER = incl/minishell.h
+
+all: $(NAME)
+
+$(NAME):
+	cd ~/code/libft/ && make re
+	$(CC) $(CCFLAGS) $(SRC) -L./libft -lftprintf -o $(NAME)
 
 clean:
-		$(RM) $(OBJ)
+	$(RM) $(OBJ)
 
 fclean:clean
-		$(RM) $(NAME)
+	$(RM) $(NAME)
 
-re:fclean $(NAME)
+re:fclean
+	$(NAME)
