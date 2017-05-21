@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_parse.c                                         :+:      :+:    :+:   */
+/*   ms_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/18 21:46:38 by rlutt             #+#    #+#             */
-/*   Updated: 2017/05/21 16:40:19 by rlutt            ###   ########.fr       */
+/*   Created: 2017/05/21 15:49:45 by rlutt             #+#    #+#             */
+/*   Updated: 2017/05/21 16:40:17 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/minishell.h"
 
-int		ms_parsecmd(t_shell *info)
-{
-	info->av = ft_strsplit(info->util, ' ');
-	ft_strdel(&info->util);
-	ft_strcpy(info->cmd, info->av[0]);
-	if (ft_strcmp(info->av[0], "exit") == 0)
-		return (0);
-	return (1);
-}
+//work with how you are parsing the directory now.
 
+int			ms_cd(t_shell *info)
+{
+	if (!(chdir(info->av[1])))
+		return (-1);
+	ft_bzero(info->cdir, G_MXDIRLEN);
+	if (!(getcwd(info->cdir, G_MXDIRLEN)))
+		return (-1);
+	ft_printf("%s ", info->cdir);
+	return (0);
+}

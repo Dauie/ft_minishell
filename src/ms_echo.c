@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_parse.c                                         :+:      :+:    :+:   */
+/*   ms_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/18 21:46:38 by rlutt             #+#    #+#             */
-/*   Updated: 2017/05/21 16:40:19 by rlutt            ###   ########.fr       */
+/*   Created: 2017/05/21 15:19:14 by rlutt             #+#    #+#             */
+/*   Updated: 2017/05/21 15:48:06 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/minishell.h"
 
-int		ms_parsecmd(t_shell *info)
+int			ms_echo(t_shell *info)
 {
-	info->av = ft_strsplit(info->util, ' ');
-	ft_strdel(&info->util);
-	ft_strcpy(info->cmd, info->av[0]);
-	if (ft_strcmp(info->av[0], "exit") == 0)
-		return (0);
-	return (1);
-}
+	int		i;
 
+	i = 1;
+	while (info->av[i])
+		ft_printf("%s ", info->av[i++]);
+	ft_putchar('\n');
+	return (0);
+}
