@@ -6,7 +6,7 @@
 /*   By: rlutt <ausdauerr@gmail.com>				+#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 21:03:31 by rlutt             #+#    #+#             */
-/*   Updated: 2017/05/21 16:00:11 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/05/22 12:53:32 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,29 @@ typedef enum	s_mode
 	mode
 }				t_mode;
 
-typedef struct	s_shell
+typedef struct	s_cmd
 {
-	char		**env;
 	char		**av;
 	char		*util;
 	pid_t		*child;
 	t_blean		uflg;
 	char		cmd[G_MXCMDLEN];
-	char		cdir[G_MXDIRLEN];
-}				t_shell;
+}				t_cmd;
 
-int				ms_init(t_shell *info, char **env);
-int				ms_parsecmd(t_shell *info);
+typedef struct	s_senv
+{
+	char		**env;
+	char		**pcdir;
+	char		cdir[G_MXDIRLEN];
+	int			usrnmlen;
+}				t_env;
+
+int				ms_init(t_cmd *info, t_env *shell, char **env);
+void			ms_getpcdir(t_env *shell);
+int				ms_parsecmd(t_cmd *info);
 int				ms_ismscmd(char *command);
-int				ms_execmscmd(t_shell *info);
-int				ms_execextcmd(t_shell *info);
-int				ms_echo(t_shell *info);
-int				ms_cd(t_shell *info);
+int				ms_execmscmd(t_cmd *info, t_env *shell);
+int				ms_execextcmd(t_cmd *info);
+int				ms_echo(t_cmd *info);
+int				ms_cd(t_cmd *info, t_env *shell);
 # endif

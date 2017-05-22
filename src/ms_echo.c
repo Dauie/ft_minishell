@@ -6,13 +6,13 @@
 /*   By: rlutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 15:19:14 by rlutt             #+#    #+#             */
-/*   Updated: 2017/05/21 15:48:06 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/05/21 17:28:50 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/minishell.h"
 
-int			ms_echo(t_shell *info)
+int			ms_echo(t_cmd *info)
 {
 	int		i;
 
