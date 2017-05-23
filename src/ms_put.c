@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_ismscmd.c                                       :+:      :+:    :+:   */
+/*   ms_put.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/22 12:06:06 by rlutt             #+#    #+#             */
-/*   Updated: 2017/05/22 13:48:51 by rlutt            ###   ########.fr       */
+/*   Created: 2017/05/22 13:07:12 by rlutt             #+#    #+#             */
+/*   Updated: 2017/05/22 13:08:18 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/minishell.h"
 
-int		ms_ismscmd(char *command)
+void	ms_putenv(t_env *shell)
 {
-	if (ft_strcmp(command, "cd"))
-		return (1);
-	else if (ft_strcmp(command, "echo"))
-		return (1);
-	else if (ft_strcmp(command, "env"))
-		return (1);
-	else if (ft_strcmp(command, "setenv"))
-		return (1);
-	else if (ft_strcmp(command, "unsetenv"))
-		return (1);
-	else
-		return (0);
+	ft_puttbl(shell->env);
 }

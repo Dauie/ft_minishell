@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_ismscmd.c                                       :+:      :+:    :+:   */
+/*   ms_unsetenv.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/22 12:06:06 by rlutt             #+#    #+#             */
-/*   Updated: 2017/05/22 13:48:51 by rlutt            ###   ########.fr       */
+/*   Created: 2017/05/22 16:24:19 by rlutt             #+#    #+#             */
+/*   Updated: 2017/05/22 16:45:38 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/minishell.h"
 
-int		ms_ismscmd(char *command)
+int			ms_unsetenv(t_env *shell, t_cmd *info)
 {
-	if (ft_strcmp(command, "cd"))
-		return (1);
-	else if (ft_strcmp(command, "echo"))
-		return (1);
-	else if (ft_strcmp(command, "env"))
-		return (1);
-	else if (ft_strcmp(command, "setenv"))
-		return (1);
-	else if (ft_strcmp(command, "unsetenv"))
-		return (1);
-	else
-		return (0);
+	int i;
+	
+	i = 0;
+	while (info->av[++i])
+	{
+		if ((unsetenv(info->av[i])) < 0)
+			ft_printf("%s: issue unsetting variable %s",G_PROJ, info->av[i]);
+	}
+	shell->renv = TRUE;
+	return (1);
 }

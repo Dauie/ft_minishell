@@ -6,7 +6,7 @@
 /*   By: rlutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 21:46:38 by rlutt             #+#    #+#             */
-/*   Updated: 2017/05/21 17:33:18 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/05/22 13:17:23 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,15 @@
 
 int		ms_parsecmd(t_cmd *info)
 {
-	info->av = ft_strsplit(info->util, ' ');
-	ft_strdel(&info->util);
+	if (*info->util == '\0')
+		return (0);
+	if (!(info->av = ft_strsplit(info->util, ' ')))
+		return (-1);
+	if (info->util)
+		ft_strdel(&info->util);
 	ft_strcpy(info->cmd, info->av[0]);
 	if (ft_strcmp(info->av[0], "exit") == 0)
-		return (0);
+		return (-1);
 	return (1);
 }
 
