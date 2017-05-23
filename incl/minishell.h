@@ -6,7 +6,7 @@
 /*   By: rlutt <ausdauerr@gmail.com>				+#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 21:03:31 by rlutt             #+#    #+#             */
-/*   Updated: 2017/05/22 17:21:59 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/05/22 17:48:31 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,5 @@ int				ms_echo(t_cmd *info);
 void			ms_putenv(t_env *shell);
 int				ms_cd(t_cmd *info, t_env *shell);
 int				ms_unsetenv(t_env *shell, t_cmd *info);
+int				ms_setenv(t_env *shell, t_cmd *info);
 # endif

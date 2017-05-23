@@ -6,7 +6,7 @@
 /*   By: rlutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/20 15:11:25 by rlutt             #+#    #+#             */
-/*   Updated: 2017/05/22 16:46:37 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/05/22 17:50:11 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int		ms_execmscmd(t_cmd *info, t_env *shell)
 	if (ft_strcmp(info->cmd, "echo") == 0)
 		ms_echo(info);
 	else if (ft_strcmp(info->cmd, "cd") == 0)
-		ms_cd(info, shell);/*
-	else if (ft_strcmp(info->cmd, "setenv"))
-		ms_setenv(info);*/
+		ms_cd(info, shell);
+	else if (ft_strcmp(info->cmd, "setenv") == 0)
+		ms_setenv(shell, info);
 	else if (ft_strcmp(info->cmd, "unsetenv") == 0)
 		ms_unsetenv(shell, info);
 	else if (ft_strcmp(info->cmd, "env") == 0)
