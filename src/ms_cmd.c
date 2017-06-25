@@ -6,17 +6,37 @@
 /*   By: rlutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/20 15:11:25 by rlutt             #+#    #+#             */
-/*   Updated: 2017/05/22 17:50:11 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/05/25 21:41:00 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/minishell.h"
 
-int		ms_execextcmd(t_cmd *info)
+int		ms_execextcmd(t_cmd *info, t_env *shell)
 {
-	if ((*info->child = fork()) < 0)
-		ft_printf("%s: %s error forking parent process", G_PROJ, info->cmd);
+	if (!(ms_findexe(info, shell)))
+	{
+		ft_printf("%s: %s was not found.\n");
+			return (0);
+	}
+	info->child = fork();
+	if (info->child < 0)
+	{
+		ft_printf("%s: %s error forking parent process\n", G_PROJ, info->cmd);
 		return (-1);
+	}
+	else if (info->child == 0)
+	{
+		if (execve(info->cmd, info->av, shell->env) == -1)
+			ft_printf("%s: %s is an unknown command\n", G_PROJ, info->av[0]);
+		exit(EXIT_FAILURE);
+	}
+	else
+	{
+		waitpid(info->child, &info->status, WUNTRACED);
+		while (!WIFEXITED(info->status) && !WIFSIGNALED(info->status))
+			waitpid(info->child, &info->status, WUNTRACED);
+	}
 	return (1);
 }
 
@@ -32,5 +52,7 @@ int		ms_execmscmd(t_cmd *info, t_env *shell)
 		ms_unsetenv(shell, info);
 	else if (ft_strcmp(info->cmd, "env") == 0)
 		ms_putenv(shell);
+	else if (ft_strcmp(info->cmd, "clear") == 0)
+		ms_clear();
 	return (0);
 }

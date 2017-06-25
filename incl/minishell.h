@@ -3,62 +3,81 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rlutt <ausdauerr@gmail.com>				+#+  +:+       +#+        */
+/*   By: rlutt <ausdauerr@gmail.com>		    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 21:03:31 by rlutt             #+#    #+#             */
-/*   Updated: 2017/05/22 17:48:31 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/05/25 20:37:26 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-#include "../libft/incl/gnl.h"
-#include "../libft/incl/str.h"
-#include "../libft/incl/put.h"
-#include "../libft/incl/tbl.h"
+# include "../libft/incl/gnl.h"
+# include "../libft/incl/str.h"
+# include "../libft/incl/put.h"
+# include "../libft/incl/tbl.h"
+# include <dirent.h>
 
 #define G_PROJ "minishell"
 #define G_MXNAMLEN 256
 #define G_MXCMDLEN 512
 #define G_MXDIRLEN 1024
 
-typedef enum	s_mode
+typedef enum	s_program_mode
 {
-	mode
+	continu,
+	stop
 }				t_mode;
+
+typedef enum 	s_error_code
+{
+	no_such,
+	access_denied,
+	failure,
+
+}				t_errc;
 
 typedef struct	s_cmd
 {
 	char		**av;
 	char		*util;
-	pid_t		*child;
+	pid_t		child;
+	int			status;
 	t_blean		uflg;
 	char		cmd[G_MXCMDLEN];
 }				t_cmd;
 
-typedef struct	s_senv
+typedef struct		s_senv
 {
 	char		**env;
-	t_blean		renv;
-	char		**pcdir;
-	t_blean		rdir;
+	t_blean		refrshenv;
+	char		**dirstak;
+	t_blean		refrshdir;
 	int			ret;
-	char		cdir[G_MXDIRLEN];
+	char		curdir[G_MXDIRLEN];
+	char		prevdir[G_MXDIRLEN];
 	char		*homedir;
-	int			usrnmlen;
+	char		*rootdir;
 }				t_env;
 
+
+int				ms_error(t_errc errcode, char *errstr);
 int				ms_init(t_cmd *info, t_env *shell, char **env);
-void			ms_getpcdir(t_env *shell);
+void			ms_getdirstak(t_env *shell);
 char			*ms_getenvar(t_env *shell, char *qry, size_t qlen);
-int				ms_parsecmd(t_cmd *info);
+void			ms_getenv(t_env *shell, char **environ);
+int				ms_parsecmd(t_cmd *info, t_env *shell);
 int				ms_ismscmd(char *command);
 int				ms_execmscmd(t_cmd *info, t_env *shell);
-int				ms_execextcmd(t_cmd *info);
+int				ms_execextcmd(t_cmd *info, t_env *shell);
 int				ms_echo(t_cmd *info);
 void			ms_putenv(t_env *shell);
+void			ms_putcurdir(t_env *shell);
+void			ms_clear(void);
 int				ms_cd(t_cmd *info, t_env *shell);
 int				ms_unsetenv(t_env *shell, t_cmd *info);
 int				ms_setenv(t_env *shell, t_cmd *info);
+int				ms_findexe(t_cmd *info, t_env *shell);
+
 # endif

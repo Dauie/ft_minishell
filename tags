@@ -1,0 +1,305 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ARCHIVE	libft/Makefile	/^ARCHIVE = ar rc$/;"	m
+BOOL_H	libft/incl/bool.h	/^# define BOOL_H$/;"	d
+BUFF_SIZE	libft/incl/gnl.h	/^# define BUFF_SIZE /;"	d
+CC	Makefile	/^CC = gcc$/;"	m
+CC	libft/Makefile	/^CC = gcc$/;"	m
+CCFLAGS	Makefile	/^CCFLAGS = -Wall -Werror -Wextra -g$/;"	m
+CCFLAGS	libft/Makefile	/^CCFLAGS = -I.incl -g -Wall -Werror -Wextra -O0 -c$/;"	m
+CHAR_H	libft/incl/char.h	/^# define CHAR_H$/;"	d
+CHAR_SRC	libft/Makefile	/^CHAR_SRC =	src\/primitive\/char\/ft_isalnum.c src\/primitive\/char\/ft_isalpha.c \\$/;"	m
+CNVRSN_H	libft/incl/cnvrsn.h	/^# define CNVRSN_H$/;"	d
+CNVRSN_SRC	libft/Makefile	/^CNVRSN_SRC =	src\/primitive\/cnvrsn\/ft_atoi.c src\/primitive\/cnvrsn\/ft_itoa.c \\$/;"	m
+FALSE	libft/incl/bool.h	/^	FALSE,$/;"	e	enum:e_lean
+GNL_H	libft/incl/gnl.h	/^# define GNL_H$/;"	d
+GNL_SRC	libft/Makefile	/^GNL_SRC =	src\/futil\/gnl\/gnl.c$/;"	m
+G_MXCMDLEN	incl/minishell.h	/^#define G_MXCMDLEN /;"	d
+G_MXDIRLEN	incl/minishell.h	/^#define G_MXDIRLEN /;"	d
+G_MXNAMLEN	incl/minishell.h	/^#define G_MXNAMLEN /;"	d
+G_PROJ	incl/minishell.h	/^#define G_PROJ /;"	d
+HEADDR	libft/Makefile	/^HEADDR = \/incl\/char.h \/incl\/cnvrsn.h \/incl\/mem.h \/incl\/num.h \/incl\/put.h \\$/;"	m
+HEADER	Makefile	/^HEADER = incl\/minishell.h$/;"	m
+INDEX	libft/Makefile	/^INDEX = ranlib$/;"	m
+LST_H	libft/incl/lst.h	/^# define LST_H$/;"	d
+LST_SRC	libft/Makefile	/^LST_SRC =	src\/typedefined\/lst\/ft_lstadd.c \\$/;"	m
+MEM_H	libft/incl/mem.h	/^# define MEM_H$/;"	d
+MEM_SRC	libft/Makefile	/^MEM_SRC =	src\/primitive\/mem\/\/ft_bzero.c src\/primitive\/mem\/ft_memalloc.c \\$/;"	m
+MINISHELL_H	incl/minishell.h	/^# define MINISHELL_H$/;"	d
+NAME	Makefile	/^NAME = minishell$/;"	m
+NAME	libft/Makefile	/^NAME = libftprintf.a$/;"	m
+NUM_H	libft/incl/num.h	/^# define NUM_H$/;"	d
+NUM_SRC	libft/Makefile	/^NUM_SRC = 	src\/primitive\/num\/ft_numlen.c$/;"	m
+OBJ	Makefile	/^OBJ = $(SRC:.c=.o)$/;"	m
+OBJ	libft/Makefile	/^OBJ = *.o$/;"	m
+PRINTF_H	libft/incl/printf.h	/^# define PRINTF_H$/;"	d
+PRINTF_SRC	libft/Makefile	/^PRINTF_SRC =src\/ft_printf\/ft_printf.c src\/ft_printf\/pf_initstructs.c \\$/;"	m
+PUT_H	libft/incl/put.h	/^# define PUT_H$/;"	d
+PUT_SRC	libft/Makefile	/^PUT_SRC = 	src\/primitive\/put\/ft_putchar.c src\/primitive\/put\/ft_putchar_fd.c \\$/;"	m
+RM	libft/Makefile	/^RM = -rm -fr$/;"	m
+SQR	libft/incl/num.h	/^# define SQR(/;"	d
+SRC	Makefile	/^SRC = src\/minishell.c src\/ms_parse.c src\/ms_cmd.c src\/ms_init.c \\$/;"	m
+STR_H	libft/incl/str.h	/^# define STR_H$/;"	d
+STR_SRC	libft/Makefile	/^STR_SRC = 	src\/primitive\/str\/ft_cntbnespc.c \\$/;"	m
+TBL_H	libft/incl/tbl.h	/^# define TBL_H$/;"	d
+TBL_SRC	libft/Makefile	/^TBL_SRC = 	src\/primitive\/tbl\/ft_tbldel.c src\/primitive\/tbl\/ft_tbllen.c \\$/;"	m
+TRUE	libft/incl/bool.h	/^	TRUE$/;"	e	enum:e_lean
+actn	libft/incl/printf.h	/^	t_blean			actn;$/;"	m	struct:s_frmtnfo
+actn_0x	libft/src/ft_printf/pf_print_x.c	/^static void		actn_0x(t_frmtnfo *ph, t_pfcore *db)$/;"	f	file:
+algn	libft/incl/printf.h	/^	t_blean			algn;$/;"	m	struct:s_frmtnfo
+ap	libft/incl/printf.h	/^	va_list			ap;$/;"	m	struct:s_pfcore
+av	incl/minishell.h	/^	char		**av;$/;"	m	struct:s_cmd
+child	incl/minishell.h	/^	pid_t		child;$/;"	m	struct:s_cmd
+cmd	incl/minishell.h	/^	char		cmd[G_MXCMDLEN];$/;"	m	struct:s_cmd
+content	libft/incl/lst.h	/^	void			*content;$/;"	m	struct:s_list
+content_size	libft/incl/lst.h	/^	size_t			content_size;$/;"	m	struct:s_list
+continu	incl/minishell.h	/^	continu,$/;"	e	enum:s_mode
+curdir	incl/minishell.h	/^	char		curdir[G_MXDIRLEN];$/;"	m	struct:s_senv
+dirstak	incl/minishell.h	/^	char		**dirstak;$/;"	m	struct:s_senv
+e_lean	libft/incl/bool.h	/^typedef	enum	e_lean$/;"	g
+env	incl/minishell.h	/^	char		**env;$/;"	m	struct:s_senv
+error	incl/minishell.h	/^	error,$/;"	e	enum:s_mode
+ft_atoi	libft/src/primitive/cnvrsn/ft_atoi.c	/^int				ft_atoi(char *str)$/;"	f
+ft_bzero	libft/src/primitive/mem/ft_bzero.c	/^void		ft_bzero(void *s, size_t n)$/;"	f
+ft_calloc	libft/src/primitive/mem/ft_calloc.c	/^void		*ft_calloc(size_t nmemb, size_t size)$/;"	f
+ft_cntbnespc	libft/src/primitive/str/ft_cntbnespc.c	/^size_t		ft_cntbnespc(char *str)$/;"	f
+ft_cntbspc	libft/src/primitive/str/ft_cntbspc.c	/^int			ft_cntbspc(char *str)$/;"	f
+ft_cnttotspc	libft/src/primitive/str/ft_cnttotspc.c	/^size_t		ft_cnttotspc(char *str)$/;"	f
+ft_cntwrds	libft/src/primitive/str/ft_cntwrds.c	/^size_t		ft_cntwrds(char *str, char c)$/;"	f
+ft_dirjoin	libft/src/primitive/str/ft_dirjoin.c	/^char			*ft_dirjoin(const char *s1, const char *s2)$/;"	f
+ft_fillbuff	libft/src/futil/gnl/gnl.c	/^static size_t		ft_fillbuff(t_list *db, const int fd)$/;"	f	file:
+ft_isalnum	libft/src/primitive/char/ft_isalnum.c	/^int		ft_isalnum(int c)$/;"	f
+ft_isalpha	libft/src/primitive/char/ft_isalpha.c	/^int		ft_isalpha(int c)$/;"	f
+ft_isascii	libft/src/primitive/char/ft_isascii.c	/^int		ft_isascii(int c)$/;"	f
+ft_isdigit	libft/src/primitive/char/ft_isdigit.c	/^int		ft_isdigit(int c)$/;"	f
+ft_islower	libft/src/primitive/char/ft_islower.c	/^int		ft_islower(int c)$/;"	f
+ft_isprint	libft/src/primitive/char/ft_isprint.c	/^int		ft_isprint(int c)$/;"	f
+ft_isspc	libft/src/primitive/char/ft_isspc.c	/^int		ft_isspc(int c)$/;"	f
+ft_isstralnum	libft/src/primitive/str/ft_isstralnum.c	/^int			ft_isstralnum(char *str)$/;"	f
+ft_isstralpha	libft/src/primitive/str/ft_isstralpha.c	/^int			ft_isstralpha(char *str)$/;"	f
+ft_isstrascii	libft/src/primitive/str/ft_isstrascii.c	/^int			ft_isstrascii(char *str)$/;"	f
+ft_isstrdigit	libft/src/primitive/str/ft_isstrdigit.c	/^int			ft_isstrdigit(char *str)$/;"	f
+ft_isstrprint	libft/src/primitive/str/ft_isstrprint.c	/^int			ft_isstrprint(char *str)$/;"	f
+ft_isupper	libft/src/primitive/char/ft_isupper.c	/^int		ft_isupper(int c)$/;"	f
+ft_itbllen	libft/src/primitive/tbl/ft_itbllen.c	/^size_t		ft_itbllen(int **tbl)$/;"	f
+ft_itoa	libft/src/primitive/cnvrsn/ft_itoa.c	/^char		*ft_itoa(intmax_t nbg)$/;"	f
+ft_itoabse	libft/src/primitive/cnvrsn/ft_itoabse.c	/^char		*ft_itoabse(intmax_t nbg, int bse)$/;"	f
+ft_lstadd	libft/src/typedefined/lst/ft_lstadd.c	/^void	ft_lstadd(t_list **alst, t_list *nw)$/;"	f
+ft_lstdel	libft/src/typedefined/lst/ft_lstdel.c	/^void		ft_lstdel(t_list **alst, void (*del)(void *, size_t))$/;"	f
+ft_lstdelone	libft/src/typedefined/lst/ft_lstdelone.c	/^void		ft_lstdelone(t_list **alst, void (*del)(void *, size_t))$/;"	f
+ft_lstdup	libft/src/typedefined/lst/ft_lstdup.c	/^t_list		*ft_lstdup(t_list *lst)$/;"	f
+ft_lsteadd	libft/src/typedefined/lst/ft_lsteadd.c	/^void	ft_lsteadd(t_list **alst, t_list *nw)$/;"	f
+ft_lstiter	libft/src/typedefined/lst/ft_lstiter.c	/^void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))$/;"	f
+ft_lstlen	libft/src/typedefined/lst/ft_lstlen.c	/^size_t		ft_lstlen(t_list *lst)$/;"	f
+ft_lstmap	libft/src/typedefined/lst/ft_lstmap.c	/^t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))$/;"	f
+ft_lstnew	libft/src/typedefined/lst/ft_lstnew.c	/^t_list		*ft_lstnew(void const *content, size_t content_size)$/;"	f
+ft_lstnewstak	libft/src/typedefined/lst/ft_lstnewstak.c	/^t_list		*ft_lstnewstak(void const *content, size_t content_size)$/;"	f
+ft_memalloc	libft/src/primitive/mem/ft_memalloc.c	/^void		*ft_memalloc(size_t size)$/;"	f
+ft_memccpy	libft/src/primitive/mem/ft_memccpy.c	/^void				*ft_memccpy(void *s1, const void *s2, int c, size_t n)$/;"	f
+ft_memchr	libft/src/primitive/mem/ft_memchr.c	/^void			*ft_memchr(const void *s, int c, size_t n)$/;"	f
+ft_memcmp	libft/src/primitive/mem/ft_memcmp.c	/^int					ft_memcmp(const void *s1, const void *s2, size_t n)$/;"	f
+ft_memcpy	libft/src/primitive/mem/ft_memcpy.c	/^void			*ft_memcpy(void *dst, const void *src, size_t n)$/;"	f
+ft_memdel	libft/src/primitive/mem/ft_memdel.c	/^void		ft_memdel(void **ap)$/;"	f
+ft_memmove	libft/src/primitive/mem/ft_memmove.c	/^void		*ft_memmove(void *dst, const void *src, size_t len)$/;"	f
+ft_memset	libft/src/primitive/mem/ft_memset.c	/^void		*ft_memset(void *b, int c, size_t len)$/;"	f
+ft_numlen	libft/src/primitive/num/ft_numlen.c	/^size_t		ft_numlen(intmax_t nb, int bse)$/;"	f
+ft_nxtwrdlen	libft/src/primitive/str/ft_nxtwrdlen.c	/^size_t		ft_nxtwrdlen(char *str, char c)$/;"	f
+ft_printf	libft/src/ft_printf/ft_printf.c	/^int			ft_printf(const char *frmt, ...)$/;"	f
+ft_putchar	libft/src/primitive/put/ft_putchar.c	/^void	ft_putchar(char c)$/;"	f
+ft_putchar_fd	libft/src/primitive/put/ft_putchar_fd.c	/^void		ft_putchar_fd(char c, int fd)$/;"	f
+ft_putclst	libft/src/primitive/put/ft_putclst.c	/^void		ft_putclst(t_list *lst)$/;"	f
+ft_putendl	libft/src/primitive/put/ft_putendl.c	/^void		ft_putendl(char const *s)$/;"	f
+ft_putendl_fd	libft/src/primitive/put/ft_putendl_fd.c	/^void		ft_putendl_fd(char const *s, int fd)$/;"	f
+ft_puterror	libft/src/primitive/put/ft_puterror.c	/^int		ft_puterror(int ecode)$/;"	f
+ft_putnbr	libft/src/primitive/put/ft_putnbr.c	/^void		ft_putnbr(intmax_t n)$/;"	f
+ft_putnbr_fd	libft/src/primitive/put/ft_putnbr_fd.c	/^void			ft_putnbr_fd(intmax_t n, int fd)$/;"	f
+ft_putnlst	libft/src/primitive/put/ft_putnlst.c	/^void		ft_putnlst(t_list *lst)$/;"	f
+ft_putstr	libft/src/primitive/put/ft_putstr.c	/^void		ft_putstr(char *str)$/;"	f
+ft_putstr_fd	libft/src/primitive/put/ft_putstr_fd.c	/^void		ft_putstr_fd(char const *s, int fd)$/;"	f
+ft_putstrrev	libft/src/primitive/put/ft_putstrrev.c	/^void		ft_putstrrev(char *str)$/;"	f
+ft_puttbl	libft/src/primitive/put/ft_puttbl.c	/^void		ft_puttbl(char **tbl)$/;"	f
+ft_realloc	libft/src/primitive/mem/ft_realloc.c	/^void		*ft_realloc(void *mem, size_t memsz, size_t nsz)$/;"	f
+ft_strcat	libft/src/primitive/str/ft_strcat.c	/^char	*ft_strcat(char *s1, const char *s2)$/;"	f
+ft_strchr	libft/src/primitive/str/ft_strchr.c	/^char		*ft_strchr(const char *s, int c)$/;"	f
+ft_strclr	libft/src/primitive/str/ft_strclr.c	/^void	ft_strclr(char *s)$/;"	f
+ft_strcmp	libft/src/primitive/str/ft_strcmp.c	/^int				ft_strcmp(const char *s1, const char *s2)$/;"	f
+ft_strcpy	libft/src/primitive/str/ft_strcpy.c	/^char		*ft_strcpy(char *dst, char *src)$/;"	f
+ft_strdel	libft/src/primitive/str/ft_strdel.c	/^void		ft_strdel(char **as)$/;"	f
+ft_strdup	libft/src/primitive/str/ft_strdup.c	/^char		*ft_strdup(const char *src)$/;"	f
+ft_strequ	libft/src/primitive/str/ft_strequ.c	/^int		ft_strequ(const char *s1, const char *s2)$/;"	f
+ft_striter	libft/src/primitive/str/ft_striter.c	/^void		ft_striter(char *s, void (*f)(char *))$/;"	f
+ft_striteri	libft/src/primitive/str/ft_striteri.c	/^void		ft_striteri(char *s, void (*f)(unsigned int, char *))$/;"	f
+ft_strjoin	libft/src/primitive/str/ft_strjoin.c	/^char		*ft_strjoin(char const *s1, char const *s2)$/;"	f
+ft_strlcat	libft/src/primitive/str/ft_strlcat.c	/^size_t	ft_strlcat(char *dst, const char *src, int len)$/;"	f
+ft_strlen	libft/src/primitive/str/ft_strlen.c	/^size_t		ft_strlen(const char *str)$/;"	f
+ft_strmap	libft/src/primitive/str/ft_strmap.c	/^char		*ft_strmap(char const *s, char (*f)(char))$/;"	f
+ft_strmapi	libft/src/primitive/str/ft_strmapi.c	/^char			*ft_strmapi(char const *s, char (*f)(unsigned int, char))$/;"	f
+ft_strncat	libft/src/primitive/str/ft_strncat.c	/^char	*ft_strncat(char *s1, const char *s2, size_t n)$/;"	f
+ft_strncmp	libft/src/primitive/str/ft_strncmp.c	/^int		ft_strncmp(const char *s1, const char *s2, size_t n)$/;"	f
+ft_strncpy	libft/src/primitive/str/ft_strncpy.c	/^char		*ft_strncpy(char *dst, char *src, size_t len)$/;"	f
+ft_strndup	libft/src/primitive/str/ft_strndup.c	/^char		*ft_strndup(const char *src, size_t len)$/;"	f
+ft_strnequ	libft/src/primitive/str/ft_strnequ.c	/^int		ft_strnequ(char const *s1, char const *s2, size_t n)$/;"	f
+ft_strnew	libft/src/primitive/str/ft_strnew.c	/^char		*ft_strnew(size_t size)$/;"	f
+ft_strnstr	libft/src/primitive/str/ft_strnstr.c	/^char	*ft_strnstr(const char *big, const char *little, size_t len)$/;"	f
+ft_strrchr	libft/src/primitive/str/ft_strrchr.c	/^char		*ft_strrchr(const char *s, int c)$/;"	f
+ft_strrev	libft/src/primitive/str/ft_strrev.c	/^char	*ft_strrev(char *str)$/;"	f
+ft_strsplit	libft/src/primitive/str/ft_strsplit.c	/^char			**ft_strsplit(char const *s, char c)$/;"	f
+ft_strstr	libft/src/primitive/str/ft_strstr.c	/^char				*ft_strstr(const char *big, const char *little)$/;"	f
+ft_strsub	libft/src/primitive/str/ft_strsub.c	/^char		*ft_strsub(char const *s, unsigned int start, size_t len)$/;"	f
+ft_strtrim	libft/src/primitive/str/ft_strtrim.c	/^char			*ft_strtrim(char const *s)$/;"	f
+ft_tbladdl	libft/src/primitive/tbl/ft_tbladdl.c	/^char		**ft_tbladdl(char **tbl, char *line)$/;"	f
+ft_tblcnew	libft/src/primitive/tbl/ft_tblcnew.c	/^char		**ft_tblcnew(int len)$/;"	f
+ft_tbldel	libft/src/primitive/tbl/ft_tbldel.c	/^void		ft_tbldel(char **tbl)$/;"	f
+ft_tbldup	libft/src/primitive/tbl/ft_tbldup.c	/^char		**ft_tbldup(char **tbl, int len)$/;"	f
+ft_tbllen	libft/src/primitive/tbl/ft_tbllen.c	/^size_t		ft_tbllen(char **tbl)$/;"	f
+ft_tblnnew	libft/src/primitive/tbl/ft_tblnnew.c	/^long		**ft_tblnnew(int len)$/;"	f
+ft_tolower	libft/src/primitive/str/ft_tolower.c	/^int		ft_tolower(int c)$/;"	f
+ft_toupper	libft/src/primitive/str/ft_toupper.c	/^int		ft_toupper(int c)$/;"	f
+ft_xtrctline	libft/src/futil/gnl/gnl.c	/^static size_t		ft_xtrctline(t_list *db, char **line)$/;"	f	file:
+ft_xtrctnxtwrd	libft/src/primitive/str/ft_strsplit.c	/^static char		*ft_xtrctnxtwrd(char *str, char c, size_t *i)$/;"	f	file:
+g_lhex	libft/src/ft_printf/pf_itoabse.c	/^static char				*g_lhex = {"0123456789abcdef"};$/;"	v	file:
+g_uhex	libft/src/ft_printf/pf_itoabse.c	/^static char				*g_uhex = {"0123456789ABCDEF"};$/;"	v	file:
+gnl	libft/src/futil/gnl/gnl.c	/^int					gnl(const int fd, char **line)$/;"	f
+handel_ihash	libft/src/ft_printf/pf_print_i.c	/^static void		handel_ihash(t_frmtnfo *ph, t_pfcore *db)$/;"	f	file:
+handel_isign	libft/src/ft_printf/pf_print_i.c	/^static void		handel_isign(t_frmtnfo *ph, t_pfcore *db)$/;"	f	file:
+hash	libft/incl/printf.h	/^	t_blean			hash;$/;"	m	struct:s_frmtnfo
+homedir	incl/minishell.h	/^	char		*homedir;$/;"	m	struct:s_senv
+i	libft/incl/printf.h	/^	int				i;$/;"	m	union:__anon1
+imt	libft/incl/printf.h	/^	intmax_t		imt;$/;"	m	union:__anon1
+init_t_frmtnfo	libft/src/ft_printf/pf_initstructs.c	/^void		init_t_frmtnfo(t_frmtnfo *ipg)$/;"	f
+init_uinput	libft/src/ft_printf/pf_initstructs.c	/^void		init_uinput(t_pfcore *db)$/;"	f
+inx	libft/incl/printf.h	/^	int				inx;$/;"	m	struct:s_pfcore
+l	libft/incl/printf.h	/^	long			l;$/;"	m	union:__anon1
+len	libft/incl/printf.h	/^	int				len;$/;"	m	struct:s_frmtnfo
+ll	libft/incl/printf.h	/^	long long		ll;$/;"	m	union:__anon1
+main	src/minishell.c	/^int			main(void)$/;"	f
+manage_isign	libft/src/ft_printf/pf_ihelp.c	/^void		manage_isign(t_frmtnfo *ph)$/;"	f
+manage_it_frmtnfo	libft/src/ft_printf/pf_print_i.c	/^static int		manage_it_frmtnfo(t_frmtnfo *ph)$/;"	f	file:
+manage_iwidprec	libft/src/ft_printf/pf_ihelp.c	/^void		manage_iwidprec(t_frmtnfo *ph)$/;"	f
+manage_ot_frmtnfo	libft/src/ft_printf/pf_print_o.c	/^static int		manage_ot_frmtnfo(t_frmtnfo *ph)$/;"	f	file:
+manage_owidprec	libft/src/ft_printf/pf_print_o.c	/^static void		manage_owidprec(t_frmtnfo *ph)$/;"	f	file:
+manage_swidprec	libft/src/ft_printf/pf_print_s.c	/^static int		manage_swidprec(t_frmtnfo *ph, t_pfcore *db, char *phs)$/;"	f	file:
+manage_xt_frmtnfo	libft/src/ft_printf/pf_print_x.c	/^static int		manage_xt_frmtnfo(t_frmtnfo *ph)$/;"	f	file:
+mod	libft/incl/printf.h	/^	char			mod;$/;"	m	struct:s_frmtnfo
+ms_cd	src/ms_cd.c	/^int		ms_cd(t_cmd *info, t_env *shell)$/;"	f
+ms_cdhome	src/ms_cd.c	/^static char	*ms_cdhome(t_env *shell)$/;"	f	file:
+ms_checkbin	src/ms_findexe.c	/^static int			ms_checkbin(char *bin, t_cmd *info)$/;"	f	file:
+ms_checkrfrsh	src/minishell.c	/^static void			ms_checkrfrsh(t_env *shell, char **environ)$/;"	f	file:
+ms_cleancmd	src/minishell.c	/^static void			ms_cleancmd(t_cmd *info)$/;"	f	file:
+ms_clear	src/ms_clear.c	/^void		ms_clear(void)$/;"	f
+ms_close	src/minishell.c	/^static void			ms_close(t_cmd *info, t_env *shell)$/;"	f	file:
+ms_echo	src/ms_echo.c	/^int			ms_echo(t_cmd *info)$/;"	f
+ms_execextcmd	src/ms_cmd.c	/^int		ms_execextcmd(t_cmd *info, t_env *shell)$/;"	f
+ms_execmscmd	src/ms_cmd.c	/^int		ms_execmscmd(t_cmd *info, t_env *shell)$/;"	f
+ms_findexe	src/ms_findexe.c	/^int			ms_findexe(t_cmd *info, t_env *shell)$/;"	f
+ms_getdirstak	src/ms_init.c	/^void			ms_getdirstak(t_env *shell)$/;"	f
+ms_getenv	src/ms_env.c	/^void			ms_getenv(t_env *shell, char **environ)$/;"	f
+ms_getenvar	src/ms_init.c	/^char			*ms_getenvar(t_env *shell, char *qry, size_t qlen)$/;"	f
+ms_init	src/ms_init.c	/^int				ms_init(t_cmd *info, t_env *shell, char **env)$/;"	f
+ms_initenv	src/ms_init.c	/^static int		ms_initenv(t_env *shell, char **environ)$/;"	f	file:
+ms_initinfo	src/ms_init.c	/^static void		ms_initinfo(t_cmd *info, t_env *shell)$/;"	f	file:
+ms_ismscmd	src/ms_ismscmd.c	/^int		ms_ismscmd(char *command)$/;"	f
+ms_parsecmd	src/ms_parse.c	/^int		ms_parsecmd(t_cmd *info, t_env *shell)$/;"	f
+ms_putcurdir	src/ms_put.c	/^void		ms_putcurdir(t_env *shell)$/;"	f
+ms_putenv	src/ms_put.c	/^void	ms_putenv(t_env *shell)$/;"	f
+ms_reptilde	src/ms_parse.c	/^static int	ms_reptilde(t_env *shell, char **av, int i)$/;"	f	file:
+ms_run	src/minishell.c	/^static int			ms_run(t_cmd *info, t_env *shell, char **env)$/;"	f	file:
+ms_setenv	src/ms_env.c	/^int			ms_setenv(t_env *shell, t_cmd *info)$/;"	f
+ms_syntaxhelper	src/ms_parse.c	/^static void	ms_syntaxhelper(t_cmd *info, t_env *shell)$/;"	f	file:
+ms_unsetenv	src/ms_env.c	/^int			ms_unsetenv(t_env *shell, t_cmd *info)$/;"	f
+next	libft/incl/lst.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list::s_list
+pf_frmtnfo	libft/src/ft_printf/ft_printf.c	/^int			pf_frmtnfo(const char *frmt, t_frmtnfo *ph, t_pfcore *db)$/;"	f
+pf_get_prec	libft/src/ft_printf/pf_width.c	/^void		pf_get_prec(const char *frmt, t_frmtnfo *ph, t_pfcore *db)$/;"	f
+pf_get_width	libft/src/ft_printf/pf_width.c	/^void		pf_get_width(const char *frmt, t_frmtnfo *ph, t_pfcore *db)$/;"	f
+pf_inumlen	libft/src/ft_printf/pf_ihelp.c	/^size_t		pf_inumlen(uintmax_t nb, int bse)$/;"	f
+pf_isflag	libft/src/ft_printf/pf_is.c	/^int			pf_isflag(int c)$/;"	f
+pf_ismod_pre	libft/src/ft_printf/pf_mod.c	/^int			pf_ismod_pre(const char *frmt, t_pfcore *db)$/;"	f
+pf_isoxdi	libft/src/ft_printf/pf_is.c	/^int			pf_isoxdi(int c)$/;"	f
+pf_istype	libft/src/ft_printf/pf_is.c	/^int			pf_istype(int c)$/;"	f
+pf_isupper	libft/src/ft_printf/pf_is.c	/^int			pf_isupper(int c)$/;"	f
+pf_iswidth	libft/src/ft_printf/pf_width.c	/^int			pf_iswidth(int c)$/;"	f
+pf_itoabse	libft/src/ft_printf/pf_itoabse.c	/^char		*pf_itoabse(uintmax_t nbg, int bse, t_frmtnfo *ph)$/;"	f
+pf_itoaz	libft/src/ft_printf/pf_itoabse.c	/^static char	*pf_itoaz(t_frmtnfo *ph)$/;"	f	file:
+pf_lmgmt_id	libft/src/ft_printf/pf_cast_di.c	/^void		pf_lmgmt_id(t_pfcore *db, t_frmtnfo *ph)$/;"	f
+pf_lmgmt_oux	libft/src/ft_printf/pf_cast_oux.c	/^void		pf_lmgmt_oux(t_pfcore *db, t_frmtnfo *ph)$/;"	f
+pf_numlen	libft/src/ft_printf/pf_itoabse.c	/^size_t		pf_numlen(uintmax_t nb, int bse, t_frmtnfo *ph)$/;"	f
+pf_parse	libft/src/ft_printf/ft_printf.c	/^int			pf_parse(const char *frmt, t_pfcore *db)$/;"	f
+pf_parse_mod	libft/src/ft_printf/pf_mod.c	/^int			pf_parse_mod(const char *frmt, t_pfcore *db, t_frmtnfo *ph)$/;"	f
+pf_pause_parse	libft/src/ft_printf/ft_printf.c	/^int			pf_pause_parse(const char *frmt, t_pfcore *db)$/;"	f
+pf_phlen	libft/src/ft_printf/pf_width.c	/^int			pf_phlen(const char *frmt, t_pfcore *db)$/;"	f
+pf_phmaster	libft/src/ft_printf/ft_printf.c	/^int			pf_phmaster(t_frmtnfo *ph, t_pfcore *db)$/;"	f
+pf_print_c	libft/src/ft_printf/pf_print_c.c	/^int				pf_print_c(t_frmtnfo *ph, t_pfcore *db)$/;"	f
+pf_print_i	libft/src/ft_printf/pf_print_i.c	/^int				pf_print_i(t_frmtnfo *ph, t_pfcore *db)$/;"	f
+pf_print_irev	libft/src/ft_printf/pf_print_i.c	/^static void		pf_print_irev(t_frmtnfo *ph, t_pfcore *db)$/;"	f	file:
+pf_print_o	libft/src/ft_printf/pf_print_o.c	/^int				pf_print_o(t_frmtnfo *ph, t_pfcore *db)$/;"	f
+pf_print_p	libft/src/ft_printf/pf_print_p.c	/^int				pf_print_p(t_frmtnfo *ph, t_pfcore *db)$/;"	f
+pf_print_perc	libft/src/ft_printf/pf_print_perc.c	/^int				pf_print_perc(t_frmtnfo *ph, t_pfcore *db)$/;"	f
+pf_print_s	libft/src/ft_printf/pf_print_s.c	/^int				pf_print_s(t_frmtnfo *ph, t_pfcore *db)$/;"	f
+pf_print_x	libft/src/ft_printf/pf_print_x.c	/^int				pf_print_x(t_frmtnfo *ph, t_pfcore *db)$/;"	f
+pf_putchar	libft/src/ft_printf/pf_putchar.c	/^int				pf_putchar(char c, t_pfcore *db)$/;"	f
+pf_putnbr	libft/src/ft_printf/pf_putnbr.c	/^int			pf_putnbr(uintmax_t n, t_frmtnfo *ph, t_pfcore *db)$/;"	f
+pf_putstr	libft/src/ft_printf/pf_putstr.c	/^int		pf_putstr(char *str, t_frmtnfo *ph, t_pfcore *db)$/;"	f
+pf_putstrprec	libft/src/ft_printf/pf_print_s.c	/^int				pf_putstrprec(char *str, t_frmtnfo *ph, t_pfcore *db)$/;"	f
+pf_tick_algn	libft/src/ft_printf/pf_tick.c	/^void		pf_tick_algn(t_frmtnfo *ph, t_pfcore *db)$/;"	f
+pf_tick_hash	libft/src/ft_printf/pf_tick.c	/^void		pf_tick_hash(t_frmtnfo *ph, t_pfcore *db)$/;"	f
+pf_tick_sign	libft/src/ft_printf/pf_tick.c	/^void		pf_tick_sign(t_frmtnfo *ph, t_pfcore *db)$/;"	f
+pf_tick_spc	libft/src/ft_printf/pf_tick.c	/^void		pf_tick_spc(t_frmtnfo *ph, t_pfcore *db)$/;"	f
+pf_tick_zero	libft/src/ft_printf/pf_tick.c	/^void		pf_tick_zero(t_frmtnfo *ph, t_pfcore *db)$/;"	f
+pf_typechr	libft/src/ft_printf/pf_typechr.c	/^char		*pf_typechr(char *phstrt)$/;"	f
+phd	libft/incl/printf.h	/^	t_data			phd;$/;"	m	struct:s_frmtnfo
+prec	libft/incl/printf.h	/^	int				prec;$/;"	m	struct:s_frmtnfo
+prevdir	incl/minishell.h	/^	char		prevdir[G_MXDIRLEN];$/;"	m	struct:s_senv
+printo_ndel	libft/src/ft_printf/pf_print_o.c	/^static void		printo_ndel(t_frmtnfo *ph, t_pfcore *db)$/;"	f	file:
+printp_ndel	libft/src/ft_printf/pf_print_p.c	/^static void		printp_ndel(t_frmtnfo *ph, t_pfcore *db)$/;"	f	file:
+printx_ndel	libft/src/ft_printf/pf_print_x.c	/^static void		printx_ndel(t_frmtnfo *ph, t_pfcore *db)$/;"	f	file:
+puterror	libft/src/ft_printf/pf_puterror.c	/^int		puterror(int ecode)$/;"	f
+putpad_c	libft/src/ft_printf/pf_print_c.c	/^static void		putpad_c(t_frmtnfo *ph, t_pfcore *db)$/;"	f	file:
+putpad_i	libft/src/ft_printf/pf_ihelp.c	/^void		putpad_i(t_frmtnfo *ph, t_pfcore *db)$/;"	f
+putpad_o	libft/src/ft_printf/pf_print_o.c	/^static void		putpad_o(t_frmtnfo *ph, t_pfcore *db)$/;"	f	file:
+putpad_p	libft/src/ft_printf/pf_print_p.c	/^static void		putpad_p(t_frmtnfo *ph, t_pfcore *db)$/;"	f	file:
+putpad_perc	libft/src/ft_printf/pf_print_perc.c	/^static void		putpad_perc(t_frmtnfo *ph, t_pfcore *db)$/;"	f	file:
+putpad_s	libft/src/ft_printf/pf_print_s.c	/^static void		putpad_s(t_frmtnfo *ph, t_pfcore *db)$/;"	f	file:
+putpad_x	libft/src/ft_printf/pf_print_x.c	/^static void		putpad_x(t_frmtnfo *ph, t_pfcore *db)$/;"	f	file:
+putprec	libft/src/ft_printf/pf_putnbr.c	/^void		putprec(t_frmtnfo *ph, t_pfcore *db)$/;"	f
+rbyt	libft/incl/lst.h	/^	long long		rbyt;$/;"	m	struct:s_list
+refrshdir	incl/minishell.h	/^	t_blean		refrshdir;$/;"	m	struct:s_senv
+refrshenv	incl/minishell.h	/^	t_blean		refrshenv;$/;"	m	struct:s_senv
+ret	incl/minishell.h	/^	int		ret;$/;"	m	struct:s_senv
+s	libft/incl/printf.h	/^	short			s;$/;"	m	union:__anon1
+s_cmd	incl/minishell.h	/^typedef struct	s_cmd$/;"	s
+s_frmtnfo	libft/incl/printf.h	/^typedef struct		s_frmtnfo$/;"	s
+s_list	libft/incl/lst.h	/^typedef	struct		s_list$/;"	s
+s_mode	incl/minishell.h	/^typedef enum	s_mode$/;"	g
+s_pfcore	libft/incl/printf.h	/^typedef struct		s_pfcore$/;"	s
+s_senv	incl/minishell.h	/^typedef struct		s_senv$/;"	s
+sc	libft/incl/printf.h	/^	signed char		sc;$/;"	m	union:__anon1
+sign	libft/incl/printf.h	/^	t_blean			sign;$/;"	m	struct:s_frmtnfo
+spc	libft/incl/printf.h	/^	t_blean			spc;$/;"	m	struct:s_frmtnfo
+st	libft/incl/printf.h	/^	size_t			st;$/;"	m	union:__anon1
+status	incl/minishell.h	/^	int		status;$/;"	m	struct:s_cmd
+stop	incl/minishell.h	/^	stop$/;"	e	enum:s_mode
+t_blean	libft/incl/bool.h	/^}				t_blean;$/;"	t	typeref:enum:e_lean
+t_cmd	incl/minishell.h	/^}			t_cmd;$/;"	t	typeref:struct:s_cmd
+t_data	libft/incl/printf.h	/^}					t_data;$/;"	t	typeref:union:__anon1
+t_env	incl/minishell.h	/^}			t_env;$/;"	t	typeref:struct:s_senv
+t_frmtnfo	libft/incl/printf.h	/^}					t_frmtnfo;$/;"	t	typeref:struct:s_frmtnfo
+t_list	libft/incl/lst.h	/^}					t_list;$/;"	t	typeref:struct:s_list
+t_mode	incl/minishell.h	/^}		t_mode;$/;"	t	typeref:enum:s_mode
+t_pfcore	libft/incl/printf.h	/^}					t_pfcore;$/;"	t	typeref:struct:s_pfcore
+tot	libft/incl/printf.h	/^	int				tot;$/;"	m	struct:s_pfcore
+type	libft/incl/printf.h	/^	char			type;$/;"	m	struct:s_frmtnfo
+uc	libft/incl/printf.h	/^	unsigned char	uc;$/;"	m	union:__anon1
+uflg	incl/minishell.h	/^	t_blean		uflg;$/;"	m	struct:s_cmd
+uimt	libft/incl/printf.h	/^	uintmax_t		uimt;$/;"	m	union:__anon1
+ul	libft/incl/printf.h	/^	unsigned long	ul;$/;"	m	union:__anon1
+upper	libft/incl/printf.h	/^	t_blean			upper;$/;"	m	struct:s_frmtnfo
+us	libft/incl/printf.h	/^	unsigned short	us;$/;"	m	union:__anon1
+util	incl/minishell.h	/^	char		*util;$/;"	m	struct:s_cmd
+width	libft/incl/printf.h	/^	int				width;$/;"	m	struct:s_frmtnfo
+wneg	libft/incl/printf.h	/^	t_blean			wneg;$/;"	m	struct:s_frmtnfo
+wprc	libft/incl/printf.h	/^	t_blean			wprc;$/;"	m	struct:s_frmtnfo
+zero	libft/incl/printf.h	/^	t_blean			zero;$/;"	m	struct:s_frmtnfo
