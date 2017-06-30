@@ -6,15 +6,15 @@
 /*   By: rlutt <rlutt@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 21:02:08 by rlutt             #+#    #+#             */
-/*   Updated: 2017/06/18 15:27:04 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/06/29 20:49:53 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/minishell.h"
 
 static void		ms_close(t_cmd *info, t_env *shell);
-static void		ms_checkrfrsh(t_env *shell, char **environ);
-static int		ms_run(t_cmd *info, t_env *shell, char **env);
+static void		ms_checkrfrsh(t_env *shell);
+static int		ms_run(t_cmd *info, t_env *shell);
 static void		ms_cleancmd(t_cmd *info);
 
 int			main(void)
@@ -24,27 +24,28 @@ int			main(void)
 	extern char	**environ;
 
 	ms_init(&info, &shell, environ);
-	ms_run(&info, &shell, environ);
+	while (1)
+	{
+		if (ms_run(&info, &shell) == -1)
+			break;
+	}
 	ms_close(&info, &shell);
 }
 
-static int			ms_run(t_cmd *info, t_env *shell, char **env)
+static int			ms_run(t_cmd *info, t_env *shell)
 {
-	while(1)
-	{
-		ms_checkrfrsh(shell, env);
-		if ((gnl(0, &info->util)) < 0)
-			return (-1);
-		if ((shell->ret = (ms_parsecmd(info, shell))) < 0)
-			break;
-		else if (shell->ret == 0)
-			continue ;
-		if (ms_ismscmd((char *)&info->cmd))
-			ms_execmscmd(info, shell);
-		else
-			ms_execextcmd(info, shell);
-		ms_cleancmd(info);
-	}
+	ms_checkrfrsh(shell);
+	if ((gnl(0, &info->util)) < 0)
+		return (-1);
+	if ((shell->ret = (ms_parsecmd(info, shell))) < 0)
+		return (-1);
+	else if (shell->ret == 0)
+		return (0);
+	if (ms_ismscmd((char *)&info->cmd))
+		ms_execmscmd(info, shell);
+	else
+		ms_execextcmd(info, shell);
+	ms_cleancmd(info);
 	return (1);
 }
 
@@ -66,11 +67,9 @@ static void			ms_close(t_cmd *info, t_env *shell)
 		ft_tbldel(shell->dirstak);
 }
 
-static void			ms_checkrfrsh(t_env *shell, char **environ)
+static void			ms_checkrfrsh(t_env *shell)
 {
 	if (shell->refrshdir == TRUE)
 		ms_getdirstak(shell);
-	if (shell->refrshenv == TRUE)
-		ms_getenv(shell, environ);
 	ms_putcurdir(shell);
 }

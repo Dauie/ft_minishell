@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_cmd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rlutt <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: rlutt <rlutt@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/20 15:11:25 by rlutt             #+#    #+#             */
-/*   Updated: 2017/05/25 21:41:00 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/06/29 20:55:02 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ int		ms_execmscmd(t_cmd *info, t_env *shell)
 		ms_echo(info);
 	else if (ft_strcmp(info->cmd, "cd") == 0)
 		ms_cd(info, shell);
-	else if (ft_strcmp(info->cmd, "setenv") == 0)
-		ms_setenv(shell, info);
+	else if (info->av[1] && ft_strcmp(info->cmd, "setenv") == 0)
+		ms_manage_setenv(shell, info);
 	else if (ft_strcmp(info->cmd, "unsetenv") == 0)
 		ms_unsetenv(shell, info);
 	else if (ft_strcmp(info->cmd, "env") == 0)

@@ -77,7 +77,7 @@ void			ms_putcurdir(t_env *shell);
 void			ms_clear(void);
 int				ms_cd(t_cmd *info, t_env *shell);
 int				ms_unsetenv(t_env *shell, t_cmd *info);
-int				ms_setenv(t_env *shell, t_cmd *info);
+int				ms_manage_setenv(t_env *shell, t_cmd *info);
 int				ms_findexe(t_cmd *info, t_env *shell);
 
 # endif

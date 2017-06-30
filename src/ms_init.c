@@ -6,7 +6,7 @@
 /*   By: rlutt <rlutt@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/20 15:32:50 by rlutt             #+#    #+#             */
-/*   Updated: 2017/06/21 12:06:25 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/06/27 17:03:17 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void		ms_initinfo(t_cmd *info, t_env *shell)
 	return (homeparse);
 }
 
- char			*ms_getroot(t_env *shell)
+ char			*ms_getrootpath(t_env *shell)
 {
 	char	 	*homepath;
 	char	 	*root;
@@ -103,8 +103,8 @@ static int		ms_initenv(t_env *shell, char **environ)
 		return (-1);
 	if (!(shell->homedir = ms_gethome(shell)))
 		return (-1);
-	ft_strcpy(shell->prevdir, shell->homedir);
-	if (!(shell->rootdir = ms_getroot(shell)))
+	ft_strcpy(shell->prevdir, shell->curdir);
+	if (!(shell->rootdir = ms_getrootpath(shell)))
 		return (-1);
 	return (1);
 }

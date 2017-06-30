@@ -6,7 +6,7 @@
 /*   By: rlutt <rlutt@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 21:46:38 by rlutt             #+#    #+#             */
-/*   Updated: 2017/06/24 18:43:00 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/06/28 14:25:48 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,32 +26,16 @@ static int	ms_reptilde(t_env *shell, char **av, int i)
 	return (0);
 }
 
-static void ms_prep_envav(t_cmd *info)
+static int ms_repdolla(t_env *shell, char *argstr)
 {
-	char **deltmp;
-	char **tmp;
+	char *tmp;
 
 	tmp = NULL;
-	deltmp = info->av;
-	if (info->av[1] && info->av[2])
-		return ;
-	else if (info->av[1])
-	{
-		if (ft_strchr(info->av[1], '='))
-		{
-			if (!(tmp = ft_strsplit(info->av[1], '=')))
-				return ;
-			if (tmp[0] && tmp[1])
-			{
-				free(info->av[1]);
-				info->av[1] = tmp[0];
-				free(info->av[2]);
-				info->av[2] = tmp[1];
-			}
-		}
-		else
-			ls_error(4);
-	}
+	if (!(tmp = ms_getenvar(shell, argstr, ft_strlen(argstr))))
+		return (-1);
+	else
+		argstr = tmp;
+	return (0);
 }
 
 static void	ms_syntaxhelper(t_cmd *info, t_env *shell)
@@ -59,12 +43,12 @@ static void	ms_syntaxhelper(t_cmd *info, t_env *shell)
 	int	i;
 
 	i = -1;
-	if (ft_strcmp(info->av[0], "setenv") == 1)
-		ms_prep_envav(info);
 	while (info->av[++i])
 	{
 		if(info->av[i][0] == '~')
 			ms_reptilde(shell, info->av, i);
+		else if (info->av[i][0] == '$')
+			ms_repdolla(shell, info->av[i]);
 		else
 			continue;
 	}
@@ -77,8 +61,7 @@ int		ms_parsecmd(t_cmd *info, t_env *shell)
 		return (0);
 	if (!(info->av = ft_strsplit(info->util, ' ')))
 		return (-1);
-	if (info->util)
-		ft_strdel(&info->util);
+	ft_strdel(&info->util);
 	ft_strcpy(info->cmd, info->av[0]);
 	ms_syntaxhelper(info, shell);
 	if (ft_strcmp(info->av[0], "exit") == 0)
