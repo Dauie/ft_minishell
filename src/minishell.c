@@ -6,7 +6,7 @@
 /*   By: rlutt <rlutt@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 21:02:08 by rlutt             #+#    #+#             */
-/*   Updated: 2017/07/19 22:14:20 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/07/20 13:32:19 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int			main(void)
 
 static int			ms_run(t_cmd *info, t_env *shell)
 {
-
+	//INSIDE OF CHKREFRESH YOU NEED TO HAVE IT UPDATE PWD.
 	ms_checkrfrsh(shell);
 	if ((gnl(0, &info->util)) < 0)
 		return (-1);
@@ -69,6 +69,9 @@ static void			ms_close(t_cmd *info, t_env *shell)
 static void			ms_checkrfrsh(t_env *shell)
 {
 	if (shell->refrshdir == TRUE)
+	{
 		ms_getdirstak(shell);
+		ms_updatepwd(shell);
+	}
 	ms_putcurdir(shell);
 }

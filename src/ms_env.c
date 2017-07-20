@@ -6,7 +6,7 @@
 /*   By: rlutt <rlutt@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 16:24:19 by rlutt             #+#    #+#             */
-/*   Updated: 2017/06/30 11:33:23 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/07/20 12:43:50 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,19 @@ int 		ms_envchgstr_parse(t_cmd *info);
 
 int			ms_unsetenv(t_env *shell, t_cmd *info)
 {
-	int i;
-	
-	i = 0;
-	while (info->av[i])
+	char **dtmp;
+
+	dtmp = shell->env;
+	if (info->av[1])
 	{
-		if ((unsetenv(info->av[i++])) < 0)
-			ft_printf("%s: issue unsetting variable %s\n", G_PROJ, info->av[i]);
+		ft_printf("unsetting environment var\n");
+		ft_printf("%s\n", info->av[1]);
+		if (!(shell->env = ft_tblrmline(shell->env, info->av[1],
+			ft_tbllen(shell->env))))
+			return(-1);
+		if (dtmp)
+			ft_tbldel(dtmp);
 	}
-	shell->refrshenv = TRUE;
 	return (1);
 }
 

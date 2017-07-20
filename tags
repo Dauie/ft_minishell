@@ -9,7 +9,7 @@ BOOL_H	libft/incl/bool.h	/^# define BOOL_H$/;"	d
 BUFF_SIZE	libft/incl/gnl.h	/^# define BUFF_SIZE /;"	d
 CC	Makefile	/^CC = gcc$/;"	m
 CC	libft/Makefile	/^CC = gcc$/;"	m
-CCFLAGS	Makefile	/^CCFLAGS = -Wall -Werror -Wextra -g$/;"	m
+CCFLAGS	Makefile	/^CCFLAGS = -Wall -Werror -Wextra -g -fsanitize=address$/;"	m
 CCFLAGS	libft/Makefile	/^CCFLAGS = -I.incl -g -Wall -Werror -Wextra -O0 -c$/;"	m
 CHAR_H	libft/incl/char.h	/^# define CHAR_H$/;"	d
 CHAR_SRC	libft/Makefile	/^CHAR_SRC =	src\/primitive\/char\/ft_isalnum.c src\/primitive\/char\/ft_isalpha.c \\$/;"	m
@@ -29,7 +29,7 @@ LST_H	libft/incl/lst.h	/^# define LST_H$/;"	d
 LST_SRC	libft/Makefile	/^LST_SRC =	src\/typedefined\/lst\/ft_lstadd.c \\$/;"	m
 MEM_H	libft/incl/mem.h	/^# define MEM_H$/;"	d
 MEM_SRC	libft/Makefile	/^MEM_SRC =	src\/primitive\/mem\/\/ft_bzero.c src\/primitive\/mem\/ft_memalloc.c \\$/;"	m
-MINISHELL_H	incl/minishell.h	/^# define MINISHELL_H$/;"	d
+MINISHELL_H	incl/minishell.h	/^#define MINISHELL_H$/;"	d
 NAME	Makefile	/^NAME = minishell$/;"	m
 NAME	libft/Makefile	/^NAME = libftprintf.a$/;"	m
 NUM_H	libft/incl/num.h	/^# define NUM_H$/;"	d
@@ -48,21 +48,22 @@ STR_SRC	libft/Makefile	/^STR_SRC = 	src\/primitive\/str\/ft_cntbnespc.c \\$/;"	m
 TBL_H	libft/incl/tbl.h	/^# define TBL_H$/;"	d
 TBL_SRC	libft/Makefile	/^TBL_SRC = 	src\/primitive\/tbl\/ft_tbldel.c src\/primitive\/tbl\/ft_tbllen.c \\$/;"	m
 TRUE	libft/incl/bool.h	/^	TRUE$/;"	e	enum:e_lean
+access_denied	incl/minishell.h	/^    access_denied,$/;"	e	enum:s_error_code
 actn	libft/incl/printf.h	/^	t_blean			actn;$/;"	m	struct:s_frmtnfo
 actn_0x	libft/src/ft_printf/pf_print_x.c	/^static void		actn_0x(t_frmtnfo *ph, t_pfcore *db)$/;"	f	file:
 algn	libft/incl/printf.h	/^	t_blean			algn;$/;"	m	struct:s_frmtnfo
 ap	libft/incl/printf.h	/^	va_list			ap;$/;"	m	struct:s_pfcore
-av	incl/minishell.h	/^	char		**av;$/;"	m	struct:s_cmd
-child	incl/minishell.h	/^	pid_t		child;$/;"	m	struct:s_cmd
-cmd	incl/minishell.h	/^	char		cmd[G_MXCMDLEN];$/;"	m	struct:s_cmd
+av	incl/minishell.h	/^    char 		**av;$/;"	m	struct:s_cmd
+child	incl/minishell.h	/^    pid_t 		child;$/;"	m	struct:s_cmd
+cmd	incl/minishell.h	/^    char		cmd[G_MXCMDLEN];$/;"	m	struct:s_cmd
 content	libft/incl/lst.h	/^	void			*content;$/;"	m	struct:s_list
 content_size	libft/incl/lst.h	/^	size_t			content_size;$/;"	m	struct:s_list
-continu	incl/minishell.h	/^	continu,$/;"	e	enum:s_mode
-curdir	incl/minishell.h	/^	char		curdir[G_MXDIRLEN];$/;"	m	struct:s_senv
-dirstak	incl/minishell.h	/^	char		**dirstak;$/;"	m	struct:s_senv
+continu	incl/minishell.h	/^    continu,$/;"	e	enum:s_program_mode
+curdir	incl/minishell.h	/^    char		curdir[G_MXDIRLEN];$/;"	m	struct:s_senv
+dirstak	incl/minishell.h	/^    char		**dirstak;$/;"	m	struct:s_senv
 e_lean	libft/incl/bool.h	/^typedef	enum	e_lean$/;"	g
-env	incl/minishell.h	/^	char		**env;$/;"	m	struct:s_senv
-error	incl/minishell.h	/^	error,$/;"	e	enum:s_mode
+env	incl/minishell.h	/^    char		**env;$/;"	m	struct:s_senv
+failure	incl/minishell.h	/^    failure,$/;"	e	enum:s_error_code
 ft_atoi	libft/src/primitive/cnvrsn/ft_atoi.c	/^int				ft_atoi(char *str)$/;"	f
 ft_bzero	libft/src/primitive/mem/ft_bzero.c	/^void		ft_bzero(void *s, size_t n)$/;"	f
 ft_calloc	libft/src/primitive/mem/ft_calloc.c	/^void		*ft_calloc(size_t nmemb, size_t size)$/;"	f
@@ -157,6 +158,7 @@ ft_tbldel	libft/src/primitive/tbl/ft_tbldel.c	/^void		ft_tbldel(char **tbl)$/;"	
 ft_tbldup	libft/src/primitive/tbl/ft_tbldup.c	/^char		**ft_tbldup(char **tbl, int len)$/;"	f
 ft_tbllen	libft/src/primitive/tbl/ft_tbllen.c	/^size_t		ft_tbllen(char **tbl)$/;"	f
 ft_tblnnew	libft/src/primitive/tbl/ft_tblnnew.c	/^long		**ft_tblnnew(int len)$/;"	f
+ft_tblrmline	libft/src/primitive/tbl/ft_tblrmline.c	/^char            **ft_tblrmline(char **tbl, char *rm, int len)$/;"	f
 ft_tolower	libft/src/primitive/str/ft_tolower.c	/^int		ft_tolower(int c)$/;"	f
 ft_toupper	libft/src/primitive/str/ft_toupper.c	/^int		ft_toupper(int c)$/;"	f
 ft_xtrctline	libft/src/futil/gnl/gnl.c	/^static size_t		ft_xtrctline(t_list *db, char **line)$/;"	f	file:
@@ -167,7 +169,7 @@ gnl	libft/src/futil/gnl/gnl.c	/^int					gnl(const int fd, char **line)$/;"	f
 handel_ihash	libft/src/ft_printf/pf_print_i.c	/^static void		handel_ihash(t_frmtnfo *ph, t_pfcore *db)$/;"	f	file:
 handel_isign	libft/src/ft_printf/pf_print_i.c	/^static void		handel_isign(t_frmtnfo *ph, t_pfcore *db)$/;"	f	file:
 hash	libft/incl/printf.h	/^	t_blean			hash;$/;"	m	struct:s_frmtnfo
-homedir	incl/minishell.h	/^	char		*homedir;$/;"	m	struct:s_senv
+homedir	incl/minishell.h	/^    char		*homedir;$/;"	m	struct:s_senv
 i	libft/incl/printf.h	/^	int				i;$/;"	m	union:__anon1
 imt	libft/incl/printf.h	/^	intmax_t		imt;$/;"	m	union:__anon1
 init_t_frmtnfo	libft/src/ft_printf/pf_initstructs.c	/^void		init_t_frmtnfo(t_frmtnfo *ipg)$/;"	f
@@ -186,32 +188,38 @@ manage_swidprec	libft/src/ft_printf/pf_print_s.c	/^static int		manage_swidprec(t
 manage_xt_frmtnfo	libft/src/ft_printf/pf_print_x.c	/^static int		manage_xt_frmtnfo(t_frmtnfo *ph)$/;"	f	file:
 mod	libft/incl/printf.h	/^	char			mod;$/;"	m	struct:s_frmtnfo
 ms_cd	src/ms_cd.c	/^int		ms_cd(t_cmd *info, t_env *shell)$/;"	f
-ms_cdhome	src/ms_cd.c	/^static char	*ms_cdhome(t_env *shell)$/;"	f	file:
+ms_cd_cleanup	src/ms_cd.c	/^static void ms_cd_cleanup(t_env *shell, char *dir)$/;"	f	file:
 ms_checkbin	src/ms_findexe.c	/^static int			ms_checkbin(char *bin, t_cmd *info)$/;"	f	file:
-ms_checkrfrsh	src/minishell.c	/^static void			ms_checkrfrsh(t_env *shell, char **environ)$/;"	f	file:
+ms_checkrfrsh	src/minishell.c	/^static void			ms_checkrfrsh(t_env *shell)$/;"	f	file:
 ms_cleancmd	src/minishell.c	/^static void			ms_cleancmd(t_cmd *info)$/;"	f	file:
 ms_clear	src/ms_clear.c	/^void		ms_clear(void)$/;"	f
 ms_close	src/minishell.c	/^static void			ms_close(t_cmd *info, t_env *shell)$/;"	f	file:
+ms_craft_newenv	src/ms_env.c	/^char			*ms_craft_newenv(const char *name, const char *value)$/;"	f
 ms_echo	src/ms_echo.c	/^int			ms_echo(t_cmd *info)$/;"	f
+ms_envchgstr_parse	src/ms_env.c	/^int 		ms_envchgstr_parse(t_cmd *info)$/;"	f
+ms_error	src/ms_put.c	/^int		ms_error(t_errc errcode, char *errstr)$/;"	f
 ms_execextcmd	src/ms_cmd.c	/^int		ms_execextcmd(t_cmd *info, t_env *shell)$/;"	f
 ms_execmscmd	src/ms_cmd.c	/^int		ms_execmscmd(t_cmd *info, t_env *shell)$/;"	f
 ms_findexe	src/ms_findexe.c	/^int			ms_findexe(t_cmd *info, t_env *shell)$/;"	f
-ms_getdirstak	src/ms_init.c	/^void			ms_getdirstak(t_env *shell)$/;"	f
-ms_getenv	src/ms_env.c	/^void			ms_getenv(t_env *shell, char **environ)$/;"	f
-ms_getenvar	src/ms_init.c	/^char			*ms_getenvar(t_env *shell, char *qry, size_t qlen)$/;"	f
-ms_init	src/ms_init.c	/^int				ms_init(t_cmd *info, t_env *shell, char **env)$/;"	f
-ms_initenv	src/ms_init.c	/^static int		ms_initenv(t_env *shell, char **environ)$/;"	f	file:
-ms_initinfo	src/ms_init.c	/^static void		ms_initinfo(t_cmd *info, t_env *shell)$/;"	f	file:
+ms_getdirstak	src/ms_init.c	/^int			ms_getdirstak(t_env *shell)$/;"	f
+ms_getenvar	src/ms_init.c	/^char 		*ms_getenvar(t_env *shell, char *qry, size_t qlen)$/;"	f
+ms_gethome	src/ms_init.c	/^char 		*ms_gethome(t_env *shell)$/;"	f
+ms_getrootpath	src/ms_init.c	/^char 		*ms_getrootpath(t_env *shell)$/;"	f
+ms_init	src/ms_init.c	/^int ms_init(t_cmd *info, t_env *shell, char **env)$/;"	f
+ms_initenv	src/ms_init.c	/^static int ms_initenv(t_env *shell, char **environ)$/;"	f	file:
+ms_initinfo	src/ms_init.c	/^static void ms_initinfo(t_cmd *info, t_env *shell)$/;"	f	file:
 ms_ismscmd	src/ms_ismscmd.c	/^int		ms_ismscmd(char *command)$/;"	f
 ms_parsecmd	src/ms_parse.c	/^int		ms_parsecmd(t_cmd *info, t_env *shell)$/;"	f
 ms_putcurdir	src/ms_put.c	/^void		ms_putcurdir(t_env *shell)$/;"	f
 ms_putenv	src/ms_put.c	/^void	ms_putenv(t_env *shell)$/;"	f
+ms_repdolla	src/ms_parse.c	/^static int ms_repdolla(t_env *shell, char *argstr)$/;"	f	file:
 ms_reptilde	src/ms_parse.c	/^static int	ms_reptilde(t_env *shell, char **av, int i)$/;"	f	file:
-ms_run	src/minishell.c	/^static int			ms_run(t_cmd *info, t_env *shell, char **env)$/;"	f	file:
-ms_setenv	src/ms_env.c	/^int			ms_setenv(t_env *shell, t_cmd *info)$/;"	f
+ms_run	src/minishell.c	/^static int			ms_run(t_cmd *info, t_env *shell)$/;"	f	file:
+ms_setenv	src/ms_env.c	/^int				ms_setenv(t_env *shell, t_cmd *info)$/;"	f
 ms_syntaxhelper	src/ms_parse.c	/^static void	ms_syntaxhelper(t_cmd *info, t_env *shell)$/;"	f	file:
 ms_unsetenv	src/ms_env.c	/^int			ms_unsetenv(t_env *shell, t_cmd *info)$/;"	f
 next	libft/incl/lst.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list::s_list
+no_such_file	incl/minishell.h	/^    no_such_file,$/;"	e	enum:s_error_code
 pf_frmtnfo	libft/src/ft_printf/ft_printf.c	/^int			pf_frmtnfo(const char *frmt, t_frmtnfo *ph, t_pfcore *db)$/;"	f
 pf_get_prec	libft/src/ft_printf/pf_width.c	/^void		pf_get_prec(const char *frmt, t_frmtnfo *ph, t_pfcore *db)$/;"	f
 pf_get_width	libft/src/ft_printf/pf_width.c	/^void		pf_get_width(const char *frmt, t_frmtnfo *ph, t_pfcore *db)$/;"	f
@@ -252,7 +260,7 @@ pf_tick_zero	libft/src/ft_printf/pf_tick.c	/^void		pf_tick_zero(t_frmtnfo *ph, t
 pf_typechr	libft/src/ft_printf/pf_typechr.c	/^char		*pf_typechr(char *phstrt)$/;"	f
 phd	libft/incl/printf.h	/^	t_data			phd;$/;"	m	struct:s_frmtnfo
 prec	libft/incl/printf.h	/^	int				prec;$/;"	m	struct:s_frmtnfo
-prevdir	incl/minishell.h	/^	char		prevdir[G_MXDIRLEN];$/;"	m	struct:s_senv
+prevdir	incl/minishell.h	/^    char		prevdir[G_MXDIRLEN];$/;"	m	struct:s_senv
 printo_ndel	libft/src/ft_printf/pf_print_o.c	/^static void		printo_ndel(t_frmtnfo *ph, t_pfcore *db)$/;"	f	file:
 printp_ndel	libft/src/ft_printf/pf_print_p.c	/^static void		printp_ndel(t_frmtnfo *ph, t_pfcore *db)$/;"	f	file:
 printx_ndel	libft/src/ft_printf/pf_print_x.c	/^static void		printx_ndel(t_frmtnfo *ph, t_pfcore *db)$/;"	f	file:
@@ -266,39 +274,42 @@ putpad_s	libft/src/ft_printf/pf_print_s.c	/^static void		putpad_s(t_frmtnfo *ph,
 putpad_x	libft/src/ft_printf/pf_print_x.c	/^static void		putpad_x(t_frmtnfo *ph, t_pfcore *db)$/;"	f	file:
 putprec	libft/src/ft_printf/pf_putnbr.c	/^void		putprec(t_frmtnfo *ph, t_pfcore *db)$/;"	f
 rbyt	libft/incl/lst.h	/^	long long		rbyt;$/;"	m	struct:s_list
-refrshdir	incl/minishell.h	/^	t_blean		refrshdir;$/;"	m	struct:s_senv
-refrshenv	incl/minishell.h	/^	t_blean		refrshenv;$/;"	m	struct:s_senv
-ret	incl/minishell.h	/^	int		ret;$/;"	m	struct:s_senv
+refrshdir	incl/minishell.h	/^    t_blean		refrshdir;$/;"	m	struct:s_senv
+refrshenv	incl/minishell.h	/^    t_blean		refrshenv;$/;"	m	struct:s_senv
+ret	incl/minishell.h	/^    int			ret;$/;"	m	struct:s_senv
+rootdir	incl/minishell.h	/^    char		*rootdir;$/;"	m	struct:s_senv
 s	libft/incl/printf.h	/^	short			s;$/;"	m	union:__anon1
-s_cmd	incl/minishell.h	/^typedef struct	s_cmd$/;"	s
+s_cmd	incl/minishell.h	/^typedef struct s_cmd$/;"	s
+s_error_code	incl/minishell.h	/^typedef enum s_error_code {$/;"	g
 s_frmtnfo	libft/incl/printf.h	/^typedef struct		s_frmtnfo$/;"	s
 s_list	libft/incl/lst.h	/^typedef	struct		s_list$/;"	s
-s_mode	incl/minishell.h	/^typedef enum	s_mode$/;"	g
 s_pfcore	libft/incl/printf.h	/^typedef struct		s_pfcore$/;"	s
-s_senv	incl/minishell.h	/^typedef struct		s_senv$/;"	s
+s_program_mode	incl/minishell.h	/^typedef enum s_program_mode {$/;"	g
+s_senv	incl/minishell.h	/^typedef struct s_senv$/;"	s
 sc	libft/incl/printf.h	/^	signed char		sc;$/;"	m	union:__anon1
 sign	libft/incl/printf.h	/^	t_blean			sign;$/;"	m	struct:s_frmtnfo
 spc	libft/incl/printf.h	/^	t_blean			spc;$/;"	m	struct:s_frmtnfo
 st	libft/incl/printf.h	/^	size_t			st;$/;"	m	union:__anon1
-status	incl/minishell.h	/^	int		status;$/;"	m	struct:s_cmd
-stop	incl/minishell.h	/^	stop$/;"	e	enum:s_mode
+status	incl/minishell.h	/^    int 		status;$/;"	m	struct:s_cmd
+stop	incl/minishell.h	/^    stop$/;"	e	enum:s_program_mode
 t_blean	libft/incl/bool.h	/^}				t_blean;$/;"	t	typeref:enum:e_lean
-t_cmd	incl/minishell.h	/^}			t_cmd;$/;"	t	typeref:struct:s_cmd
+t_cmd	incl/minishell.h	/^} 				t_cmd;$/;"	t	typeref:struct:s_cmd
 t_data	libft/incl/printf.h	/^}					t_data;$/;"	t	typeref:union:__anon1
-t_env	incl/minishell.h	/^}			t_env;$/;"	t	typeref:struct:s_senv
+t_env	incl/minishell.h	/^} 				t_env;$/;"	t	typeref:struct:s_senv
+t_errc	incl/minishell.h	/^} t_errc;$/;"	t	typeref:enum:s_error_code
 t_frmtnfo	libft/incl/printf.h	/^}					t_frmtnfo;$/;"	t	typeref:struct:s_frmtnfo
 t_list	libft/incl/lst.h	/^}					t_list;$/;"	t	typeref:struct:s_list
-t_mode	incl/minishell.h	/^}		t_mode;$/;"	t	typeref:enum:s_mode
+t_mode	incl/minishell.h	/^} t_mode;$/;"	t	typeref:enum:s_program_mode
 t_pfcore	libft/incl/printf.h	/^}					t_pfcore;$/;"	t	typeref:struct:s_pfcore
 tot	libft/incl/printf.h	/^	int				tot;$/;"	m	struct:s_pfcore
 type	libft/incl/printf.h	/^	char			type;$/;"	m	struct:s_frmtnfo
 uc	libft/incl/printf.h	/^	unsigned char	uc;$/;"	m	union:__anon1
-uflg	incl/minishell.h	/^	t_blean		uflg;$/;"	m	struct:s_cmd
+uflg	incl/minishell.h	/^    t_blean		uflg;$/;"	m	struct:s_cmd
 uimt	libft/incl/printf.h	/^	uintmax_t		uimt;$/;"	m	union:__anon1
 ul	libft/incl/printf.h	/^	unsigned long	ul;$/;"	m	union:__anon1
 upper	libft/incl/printf.h	/^	t_blean			upper;$/;"	m	struct:s_frmtnfo
 us	libft/incl/printf.h	/^	unsigned short	us;$/;"	m	union:__anon1
-util	incl/minishell.h	/^	char		*util;$/;"	m	struct:s_cmd
+util	incl/minishell.h	/^    char 		*util;$/;"	m	struct:s_cmd
 width	libft/incl/printf.h	/^	int				width;$/;"	m	struct:s_frmtnfo
 wneg	libft/incl/printf.h	/^	t_blean			wneg;$/;"	m	struct:s_frmtnfo
 wprc	libft/incl/printf.h	/^	t_blean			wprc;$/;"	m	struct:s_frmtnfo

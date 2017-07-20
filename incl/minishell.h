@@ -59,6 +59,7 @@ typedef struct s_senv
     char		*rootdir;
 } 				t_env;
 
+void ms_updatepwd(t_env *shell);
 int ms_error(t_errc errcode, char *errstr);
 int ms_init(t_cmd *info, t_env *shell, char **env);
 int ms_getdirstak(t_env *shell);
