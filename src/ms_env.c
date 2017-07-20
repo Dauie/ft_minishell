@@ -6,7 +6,7 @@
 /*   By: rlutt <rlutt@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 16:24:19 by rlutt             #+#    #+#             */
-/*   Updated: 2017/06/29 20:47:32 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/06/30 11:33:23 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char			*ms_craft_newenv(const char *name, const char *value)
 	return (newenv);
 }
 
-int				ms_manage_setenv(t_env *shell, t_cmd *info)
+int				ms_setenv(t_env *shell, t_cmd *info)
 {
 	char 		*newenv;
 	char 		**dtmp;

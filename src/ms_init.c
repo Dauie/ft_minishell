@@ -6,120 +6,124 @@
 /*   By: rlutt <rlutt@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/20 15:32:50 by rlutt             #+#    #+#             */
-/*   Updated: 2017/06/27 17:03:17 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/07/19 22:14:54 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/minishell.h"
 
-static void		ms_initinfo(t_cmd *info, t_env *shell)
+static void ms_initinfo(t_cmd *info, t_env *shell)
 {
-	shell->env = NULL;
-	shell->dirstak = NULL;
-	shell->homedir = NULL;
-	shell->refrshenv = FALSE;
-	shell->refrshdir = FALSE;
-	info->av = NULL;
-	info->util = NULL;
-	info->child = 0;
-	info->uflg = FALSE;
-}
- 
- char			*ms_gethome(t_env *shell)
-{
-	char	 	*homepath;
-	char	 	*homeparse;
-
-	homeparse = NULL;
-	homepath = NULL;
-	if (!(homepath = ms_getenvar(shell, "HOME=", 5)))
-		return (NULL);
-	if (!(homeparse = ft_strdup(&homepath[5])))
-		return (NULL);
-	ft_strdel(&homepath);
-	return (homeparse);
+    shell->env = NULL;
+    shell->dirstak = NULL;
+    shell->homedir = NULL;
+    shell->refrshenv = FALSE;
+    shell->refrshdir = FALSE;
+    info->av = NULL;
+    info->util = NULL;
+    info->child = 0;
+    info->uflg = FALSE;
 }
 
- char			*ms_getrootpath(t_env *shell)
+char 		*ms_gethome(t_env *shell)
 {
-	char	 	*homepath;
-	char	 	*root;
-	char		*end;
+    char 	*homepath;
+    char 	*homeparse;
 
-	root = NULL;
-	homepath = NULL;
-	end = NULL;
-	if (!(homepath = ms_getenvar(shell, "HOME=", 5)))
+    homeparse = NULL;
+    homepath = NULL;
+    if (!(homepath = ms_getenvar(shell, "HOME=", 5)))
 		return (NULL);
-	if (!(end = ft_strchr(homepath, '/')))
+    if (!(homeparse = ft_strdup(&homepath[5])))
 		return (NULL);
-	*end = '\0';
-	if (!(root = ft_strdup(homepath)))
-		return (NULL);
-	ft_strdel(&homepath);
-	return (root);
+    ft_strdel(&homepath);
+    return (homeparse);
 }
 
-char			*ms_getenvar(t_env *shell, char *qry, size_t qlen)
+char 		*ms_getrootpath(t_env *shell)
 {
-	char		*res;
-	int			i;
+    char 	*homepath;
+    char 	*root;
+    char 	*end;
 
-	i = -1;
-	res = NULL;
-	while (shell->env[++i])
-	{
+    root = NULL;
+    homepath = NULL;
+    end = NULL;
+    if (!(homepath = ms_getenvar(shell, "HOME=", 5)))
+		return (NULL);
+    if (!(end = ft_strchr(homepath, '/')))
+		return (NULL);
+    *end = '\0';
+    if (!(root = ft_strdup(homepath)))
+		return (NULL);
+    ft_strdel(&homepath);
+    return (root);
+}
+
+char 		*ms_getenvar(t_env *shell, char *qry, size_t qlen)
+{
+    char 	*res;
+    int 	i;
+
+    i = -1;
+    res = NULL;
+    if (!qry || !shell)
+		return (NULL);
+    while (shell->env[++i])
+    {
 		if (ft_strncmp(shell->env[i], qry, qlen) == 0)
 			if (!(res = ft_strdup(shell->env[i])))
 				return (NULL);
-	}
-	return (res);
+    }
+    return (res);
 }
 
-void			ms_getdirstak(t_env *shell)
+int			ms_getdirstak(t_env *shell)
 {
-	char		**dtmp;
-	char		**tmp;
-	int			len;
+    char 	**dtmp;
+    char 	**tmp;
+    int 	len;
 
-	len = 0;
-	dtmp = shell->dirstak;
-	if (!(tmp = (char **)ft_strsplit(shell->curdir, '/')))
-		return ;
-	len = (ft_tbllen(tmp) - 2);
-	if (!(shell->dirstak = ft_tbldup(&tmp[len], 2)))
-		return ;
-	ft_tbldel(tmp);
-	if (dtmp)
+    len = 0;
+    dtmp = shell->dirstak;
+    if (!(tmp = (char **)ft_strsplit(shell->curdir, '/')))
+		return -1;
+    len = (ft_tbllen(tmp) - 2);
+    if (!(shell->dirstak = ft_tbldup(&tmp[len], 2)))
+		return -1;
+    ft_tbldel(tmp);
+    if (dtmp)
 		ft_tbldel(dtmp);
+    return (1);
 }
 
-static int		ms_initenv(t_env *shell, char **environ)
+static int ms_initenv(t_env *shell, char **environ)
 {
-	if (!(getcwd(shell->curdir, G_MXDIRLEN)))
+    if (!(getcwd(shell->curdir, G_MXDIRLEN)))
 		return (-1);
-	ms_getdirstak(shell);
-	if (!(shell->env = ft_tbldup(environ, ft_tbllen(environ))))
+    if (!(ms_getdirstak(shell)))
 		return (-1);
-	if (!(shell->homedir = ms_gethome(shell)))
+    if (!(shell->env = ft_tbldup(environ, ft_tbllen(environ))))
 		return (-1);
-	ft_strcpy(shell->prevdir, shell->curdir);
-	if (!(shell->rootdir = ms_getrootpath(shell)))
+    if (!(shell->homedir = ms_gethome(shell)))
 		return (-1);
-	return (1);
+    ft_strcpy(shell->prevdir, shell->curdir);
+    if (!(shell->rootdir = ms_getrootpath(shell)))
+		return (-1);
+    return (1);
 }
 
-int				ms_init(t_cmd *info, t_env *shell, char **env)
+int ms_init(t_cmd *info, t_env *shell, char **env)
 {
-	ms_initinfo(info, shell);
-	if (!(ms_initenv(shell, env)))
-	{
+    ms_initinfo(info, shell);
+    if (!(ms_initenv(shell, env)))
+    {
 		ft_printf("%s: Error during environment setup\n", G_PROJ);
 		return (-1);
-	}
+    }
 	else
-	{
+    {
 		ft_printf("(%s)\nv0.4\n", G_PROJ);
 		return (1);
-	}
+    }
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_findexe.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rlutt <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: rlutt <rlutt@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 15:37:02 by rlutt             #+#    #+#             */
-/*   Updated: 2017/05/25 21:39:23 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/07/19 21:30:28 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ static int			ms_checkbin(char *bin, t_cmd *info)
 	{
 		if (ft_strcmp(sd->d_name, info->cmd) == 0)
 		{
-			tmp = ft_dirjoin(bin, info->cmd);
+			if (!(tmp = ft_dirjoin(bin, info->cmd)))
+				return (-1);
 			ft_bzero(info->cmd, G_MXDIRLEN);
 			ft_strcpy(info->cmd, tmp);
 			return (1);
@@ -41,14 +42,15 @@ int			ms_findexe(t_cmd *info, t_env *shell)
 
 	i = -1;
 	if (!(envpath = ms_getenvar(shell, "PATH=", 5)))
-		return (0);
-	bins = ft_strsplit(envpath, ':');
+		return (-1);
+	if (!(bins = ft_strsplit(envpath, ':')))
+		return (-1);
 	while (bins[++i])
 	{
 		if (!(ms_checkbin(bins[i], info)))
 			continue ;
 	}
-	ft_strdel(&envpath);
-	ft_tbldel(bins);
+	//ft_strdel(&envpath);
+	//ft_tbldel(bins);
 	return (1);
 }

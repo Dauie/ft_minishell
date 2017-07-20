@@ -6,7 +6,7 @@
 /*   By: rlutt <rlutt@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 21:02:08 by rlutt             #+#    #+#             */
-/*   Updated: 2017/06/29 20:49:53 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/07/19 22:14:20 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int			main(void)
 	ms_init(&info, &shell, environ);
 	while (1)
 	{
-		if (ms_run(&info, &shell) == -1)
+		if (ms_run(&info, &shell) < 0)
 			break;
 	}
 	ms_close(&info, &shell);
@@ -34,14 +34,13 @@ int			main(void)
 
 static int			ms_run(t_cmd *info, t_env *shell)
 {
+
 	ms_checkrfrsh(shell);
 	if ((gnl(0, &info->util)) < 0)
 		return (-1);
-	if ((shell->ret = (ms_parsecmd(info, shell))) < 0)
+	if ((shell->ret = ms_parsecmd(info, shell)) < 0)
 		return (-1);
-	else if (shell->ret == 0)
-		return (0);
-	if (ms_ismscmd((char *)&info->cmd))
+	if (ms_ismscmd(info->cmd))
 		ms_execmscmd(info, shell);
 	else
 		ms_execextcmd(info, shell);
