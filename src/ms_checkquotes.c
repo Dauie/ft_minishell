@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_echo.c                                          :+:      :+:    :+:   */
+/*   ms_checkquotes.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlutt <rlutt@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/21 15:19:14 by rlutt             #+#    #+#             */
-/*   Updated: 2017/07/21 10:07:06 by rlutt            ###   ########.fr       */
+/*   Created: 2017/07/21 09:39:52 by rlutt             #+#    #+#             */
+/*   Updated: 2017/07/21 10:32:19 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/minishell.h"
-#include <stdio.h>
 
-int			ms_echo(t_cmd *info)
+int		ms_checkquotes(char *argstr)
 {
-	int		i;
+	int  i;
+	int flg;
 
-	i = 1;
-	while (info->av[i])
+	i = -1;
+	flg = 0;
+	while (argstr[++i])
 	{
-		ft_printf("%s ", info->av[i++]);
+		if (argstr[i] == '"' && flg == 0)
+			flg = 1;
+		else if (argstr[i] == '"' && flg == 1)
+			flg = 0;
 	}
-	ft_putchar('\n');
-	return (0);
+	return (flg == 0 ? 1 : -1);
 }

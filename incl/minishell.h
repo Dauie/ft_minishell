@@ -30,9 +30,10 @@ typedef enum s_program_mode {
 } t_mode;
 
 typedef enum s_error_code {
-    no_such_file,
-    access_denied,
-    failure,
+ 	general_failure = -1,   
+	no_such_file = -2,
+    access_denied = -3,
+	missing_quote = -4
 
 } t_errc;
 
@@ -77,5 +78,6 @@ int ms_cd(t_cmd *info, t_env *shell);
 int ms_unsetenv(t_env *shell, t_cmd *info);
 int ms_setenv(t_env *shell, t_cmd *info);
 int ms_findexe(t_cmd *info, t_env *shell);
+int	ms_checkquotes(char *argstr);
 
 #endif

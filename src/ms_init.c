@@ -6,7 +6,7 @@
 /*   By: rlutt <rlutt@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/20 15:32:50 by rlutt             #+#    #+#             */
-/*   Updated: 2017/07/19 22:14:54 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/07/21 11:52:54 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,9 @@ int			ms_getdirstak(t_env *shell)
     len = (ft_tbllen(tmp) - 2);
     if (!(shell->dirstak = ft_tbldup(&tmp[len], 2)))
 		return -1;
-    ft_tbldel(tmp);
+    ft_tbldel(tmp, ft_tbllen(tmp));
     if (dtmp)
-		ft_tbldel(dtmp);
+		ft_tbldel(dtmp, ft_tbllen(dtmp));
     return (1);
 }
 

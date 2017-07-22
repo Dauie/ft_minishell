@@ -6,7 +6,7 @@
 /*   By: rlutt <rlutt@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 21:46:38 by rlutt             #+#    #+#             */
-/*   Updated: 2017/06/28 14:25:48 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/07/21 11:36:03 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,12 @@ int		ms_parsecmd(t_cmd *info, t_env *shell)
 {
 	if (!(*info->util))
 		return (0);
+	if ((ms_checkquotes(info->util)) == -1)
+		return(ms_error(-4, NULL));
 	if (!(info->av = ft_strsplit(info->util, ' ')))
-		return (-1);
-	ft_strdel(&info->util);
+		return (ms_error(-1, NULL));
+	if (info->util)
+		ft_strdel(&info->util);
 	ft_strcpy(info->cmd, info->av[0]);
 	ms_syntaxhelper(info, shell);
 	if (ft_strcmp(info->av[0], "exit") == 0)

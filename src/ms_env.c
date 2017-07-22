@@ -6,7 +6,7 @@
 /*   By: rlutt <rlutt@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 16:24:19 by rlutt             #+#    #+#             */
-/*   Updated: 2017/07/20 12:43:50 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/07/21 11:52:29 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int			ms_unsetenv(t_env *shell, t_cmd *info)
 			ft_tbllen(shell->env))))
 			return(-1);
 		if (dtmp)
-			ft_tbldel(dtmp);
+			ft_tbldel(dtmp, ft_tbllen(dtmp));
 	}
 	return (1);
 }
@@ -62,11 +62,11 @@ int				ms_setenv(t_env *shell, t_cmd *info)
 		if (!(shell->env = ft_tbladdl(shell->env, newenv)))
 			return (-1);
 		if (dtmp)
-			ft_tbldel(dtmp);
+			ft_tbldel(dtmp, ft_tbllen(dtmp));
 		shell->refrshenv = TRUE;
 	}
 	else
-		ms_error(42, NULL);
+		ms_error(-1, NULL);
 	return (1);
 }
 
@@ -78,7 +78,7 @@ int 		ms_envchgstr_parse(t_cmd *info)
 	if (ft_strchr(info->av[1], '='))
 	{
 		if (!(tmp = ft_strsplit(info->av[1], '=')))
-			return (ms_error(42, NULL));
+			return (ms_error(-1, NULL));
 		ft_strdel(&info->av[1]);
 		ft_strdel(&info->av[2]);
 		info->av[1] = tmp[0];

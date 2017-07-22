@@ -128,6 +128,7 @@ ft_strcat	libft/src/primitive/str/ft_strcat.c	/^char	*ft_strcat(char *s1, const 
 ft_strchr	libft/src/primitive/str/ft_strchr.c	/^char		*ft_strchr(const char *s, int c)$/;"	f
 ft_strclr	libft/src/primitive/str/ft_strclr.c	/^void	ft_strclr(char *s)$/;"	f
 ft_strcmp	libft/src/primitive/str/ft_strcmp.c	/^int				ft_strcmp(const char *s1, const char *s2)$/;"	f
+ft_strcntchar	libft/src/primitive/str/ft_strstrip.c	/^static int ft_strcntchar(char *str, int c)$/;"	f	file:
 ft_strcpy	libft/src/primitive/str/ft_strcpy.c	/^char		*ft_strcpy(char *dst, char *src)$/;"	f
 ft_strdel	libft/src/primitive/str/ft_strdel.c	/^void		ft_strdel(char **as)$/;"	f
 ft_strdup	libft/src/primitive/str/ft_strdup.c	/^char		*ft_strdup(const char *src)$/;"	f
@@ -150,6 +151,7 @@ ft_strrchr	libft/src/primitive/str/ft_strrchr.c	/^char		*ft_strrchr(const char *
 ft_strrev	libft/src/primitive/str/ft_strrev.c	/^char	*ft_strrev(char *str)$/;"	f
 ft_strsplit	libft/src/primitive/str/ft_strsplit.c	/^char			**ft_strsplit(char const *s, char c)$/;"	f
 ft_strstr	libft/src/primitive/str/ft_strstr.c	/^char				*ft_strstr(const char *big, const char *little)$/;"	f
+ft_strstrip	libft/src/primitive/str/ft_strstrip.c	/^void ft_strstrip(char *str, int c)$/;"	f
 ft_strsub	libft/src/primitive/str/ft_strsub.c	/^char		*ft_strsub(char const *s, unsigned int start, size_t len)$/;"	f
 ft_strtrim	libft/src/primitive/str/ft_strtrim.c	/^char			*ft_strtrim(char const *s)$/;"	f
 ft_tbladdl	libft/src/primitive/tbl/ft_tbladdl.c	/^char		**ft_tbladdl(char **tbl, char *line)$/;"	f
@@ -158,7 +160,8 @@ ft_tbldel	libft/src/primitive/tbl/ft_tbldel.c	/^void		ft_tbldel(char **tbl)$/;"	
 ft_tbldup	libft/src/primitive/tbl/ft_tbldup.c	/^char		**ft_tbldup(char **tbl, int len)$/;"	f
 ft_tbllen	libft/src/primitive/tbl/ft_tbllen.c	/^size_t		ft_tbllen(char **tbl)$/;"	f
 ft_tblnnew	libft/src/primitive/tbl/ft_tblnnew.c	/^long		**ft_tblnnew(int len)$/;"	f
-ft_tblrmline	libft/src/primitive/tbl/ft_tblrmline.c	/^char            **ft_tblrmline(char **tbl, char *rm, int len)$/;"	f
+ft_tblrepline	libft/src/primitive/tbl/ft_tblrepline.c	/^int		ft_tblrepline(char **tbl, char *substr, char *repline)$/;"	f
+ft_tblrmline	libft/src/primitive/tbl/ft_tblrmline.c	/^char			**ft_tblrmline(char **tbl, char *rm, int len)$/;"	f
 ft_tolower	libft/src/primitive/str/ft_tolower.c	/^int		ft_tolower(int c)$/;"	f
 ft_toupper	libft/src/primitive/str/ft_toupper.c	/^int		ft_toupper(int c)$/;"	f
 ft_xtrctline	libft/src/futil/gnl/gnl.c	/^static size_t		ft_xtrctline(t_list *db, char **line)$/;"	f	file:
@@ -218,6 +221,7 @@ ms_run	src/minishell.c	/^static int			ms_run(t_cmd *info, t_env *shell)$/;"	f	fi
 ms_setenv	src/ms_env.c	/^int				ms_setenv(t_env *shell, t_cmd *info)$/;"	f
 ms_syntaxhelper	src/ms_parse.c	/^static void	ms_syntaxhelper(t_cmd *info, t_env *shell)$/;"	f	file:
 ms_unsetenv	src/ms_env.c	/^int			ms_unsetenv(t_env *shell, t_cmd *info)$/;"	f
+ms_updatepwd	src/ms_changepwd.c	/^void ms_updatepwd(t_env *shell)$/;"	f
 next	libft/incl/lst.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list::s_list
 no_such_file	incl/minishell.h	/^    no_such_file,$/;"	e	enum:s_error_code
 pf_frmtnfo	libft/src/ft_printf/ft_printf.c	/^int			pf_frmtnfo(const char *frmt, t_frmtnfo *ph, t_pfcore *db)$/;"	f
