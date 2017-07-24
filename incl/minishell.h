@@ -13,6 +13,11 @@
 #ifndef MINISHELL_H
 #define MINISHELL_H
 
+#ifdef __linux__
+#include <sys/types.h>
+#include <sys/wait.h>
+#endif
+
 #include "../libft/incl/gnl.h"
 #include "../libft/incl/str.h"
 #include "../libft/incl/put.h"

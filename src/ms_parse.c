@@ -6,7 +6,7 @@
 /*   By: rlutt <rlutt@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 21:46:38 by rlutt             #+#    #+#             */
-/*   Updated: 2017/07/21 11:36:03 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/07/23 18:31:58 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,134 @@ static void	ms_syntaxhelper(t_cmd *info, t_env *shell)
 	return ;
 }
 
+int 	ms_verifycmd(t_cmd *info)
+{
+	char *dtmp;
+
+	dtmp = info->util;
+	if ((ms_checkquotes(info->util)) == -1)
+		return(ms_error(-4, NULL));
+	if (!(info->util = ft_strtrim(info->util)))
+		return (-1);
+	if (dtmp)
+		ft_strdel(&dtmp);
+	return (1);
+}
+
+int 	ms_countargs(char *cmdarg)
+{
+	size_t	i;
+	char	*str;
+
+	i = 0;
+	str = cmdarg;
+	while (ft_isspc(*str))
+		str++;
+	if (ft_isalnum(*str) || *str == '"' )
+	{
+		i++;
+		str++;
+	}
+	while (*str)
+	{
+		if (*str == '"' && ((*str - 1) == 0 || (*str - 1) == ' '))
+		{
+			i++;
+			str = ft_strchr(str + 1, '"');
+		}
+		else if ( *str !=  ' ' && (*(str - 1) == ' ' || *(str - 1) == 0))
+			i++;
+		str++;
+	}
+	ft_printf("%d", i);
+	return (i);
+}
+
+char  *ms_getquote(char *cmdarg)
+{
+	int i;
+	char *tmp;
+	char *end;
+	char *res;
+	
+	i = -1;
+	end = NULL;
+	res = NULL;
+	tmp = cmdarg;
+	if (*tmp == '"')
+	{
+		end = ft_strchr(cmdarg + 1, '"');
+		if (!(res = ft_strnew(end - tmp)))
+			return (NULL);
+		while (*tmp && *tmp != '"')
+		{
+			res[++i] = *tmp;
+			tmp++;
+		}
+	}
+	return (res);
+}
+
+int 	ms_wordlen(char *cmdstr)
+{
+	int len;
+
+	len = 0;
+	while (cmdstr[len] && !ft_isspc(cmdstr[len]))
+		len++;
+	return (len);
+}
+
+
+char *ms_getword(char *cmdstr)
+{
+	char *res;
+	int i;
+
+	i = -1;
+	if (!(res = ft_strnew(ms_wordlen(cmdstr))))
+		return (NULL);
+	while (cmdstr[++i] && !ft_isspc(cmdstr[i]))
+		res[i] = cmdstr[i];
+	return (res);
+}
+
+char 		**ms_splitcmd(char *cmdarg)
+{
+	int 	i;
+	char	**res;
+	char	*str;
+
+	res = NULL;
+	i = 0;
+	if (!(res = ft_memalloc(sizeof(char *) * (ms_countargs(cmdarg) + 1))))
+		return (NULL);
+	str = cmdarg;
+	*str == '"' ? res[i++] = ms_getquote(str) : (0);
+	ft_isalnum(*str) ? res[i++] = ms_getword(str) : (0);
+	if (i > 0)
+		str++;
+	while (*str && i < ms_countargs(cmdarg))
+	{
+		while(ft_isspc(*str))
+			str++;
+		if (*str == '"' && ft_isspc(*(str - 1)))
+			res[i] = ms_getquote(str);
+		else if (ft_isascii(*str) && ft_isspc(*(str - 1)))
+			res[i] = ms_getword(str);
+		str++;
+	}
+	return(res);
+}
+
 int		ms_parsecmd(t_cmd *info, t_env *shell)
 {
 	if (!(*info->util))
 		return (0);
-	if ((ms_checkquotes(info->util)) == -1)
-		return(ms_error(-4, NULL));
-	if (!(info->av = ft_strsplit(info->util, ' ')))
+	else
+		if ((ms_verifycmd(info)) < 0 || !(*info->util))
+			return (-1);
+	if (!(info->av = ms_splitcmd(info->util)))
 		return (ms_error(-1, NULL));
 	if (info->util)
 		ft_strdel(&info->util);

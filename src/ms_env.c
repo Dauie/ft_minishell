@@ -6,7 +6,7 @@
 /*   By: rlutt <rlutt@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 16:24:19 by rlutt             #+#    #+#             */
-/*   Updated: 2017/07/21 11:52:29 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/07/22 11:48:16 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ int			ms_unsetenv(t_env *shell, t_cmd *info)
 	dtmp = shell->env;
 	if (info->av[1])
 	{
-		ft_printf("unsetting environment var\n");
-		ft_printf("%s\n", info->av[1]);
 		if (!(shell->env = ft_tblrmline(shell->env, info->av[1],
 			ft_tbllen(shell->env))))
 			return(-1);
