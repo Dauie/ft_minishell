@@ -6,7 +6,7 @@
 /*   By: rlutt <rlutt@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 21:46:38 by rlutt             #+#    #+#             */
-/*   Updated: 2017/07/23 19:02:37 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/07/24 10:58:38 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ static int	ms_reptilde(t_env *shell, char **av, int i)
 	char 	buff[G_MXDIRLEN];
 	char	*homepath;
 
-	homepath = ms_getenvar(shell, "HOME=", 5);
+	if (!(homepath = ms_getenvar(shell, "HOME=", 5)))
+		return (-1);
 	ft_strcpy(buff, &homepath[5]);
 	ft_strcat(buff, &av[i][1]);
 	ft_strdel(&av[i]);
@@ -26,15 +27,18 @@ static int	ms_reptilde(t_env *shell, char **av, int i)
 	return (0);
 }
 
-static int ms_repdolla(t_env *shell, char *argstr)
+static int ms_repdolla(t_env *shell, char **argstr, int i)
 {
 	char *tmp;
+	int len;
 
 	tmp = NULL;
-	if (!(tmp = ms_getenvar(shell, argstr, ft_strlen(argstr))))
+	len = ft_strlen(&argstr[i][1]);
+	if (!(tmp = ms_getenvar(shell, &argstr[i][1], len)))
 		return (-1);
-	else
-		argstr = tmp;
+	ft_strdel(&argstr[i]);
+	argstr[i] = ft_strdup(&tmp[len + 1]);
+	ft_strdel(&tmp);
 	return (0);
 }
 
@@ -48,7 +52,7 @@ static void	ms_syntaxhelper(t_cmd *info, t_env *shell)
 		if(info->av[i][0] == '~')
 			ms_reptilde(shell, info->av, i);
 		else if (info->av[i][0] == '$')
-			ms_repdolla(shell, info->av[i]);
+			ms_repdolla(shell, info->av, i);
 		else
 			continue;
 	}
