@@ -6,7 +6,7 @@
 /*   By: rlutt <rlutt@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/20 15:32:50 by rlutt             #+#    #+#             */
-/*   Updated: 2017/07/21 11:52:54 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/07/24 11:32:09 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ char 		*ms_gethome(t_env *shell)
 
     homeparse = NULL;
     homepath = NULL;
-    if (!(homepath = ms_getenvar(shell, "HOME=", 5)))
+    if (!(homepath = ms_getenvar(shell, "HOME", 4)))
 		return (NULL);
-    if (!(homeparse = ft_strdup(&homepath[5])))
+    if (!(homeparse = ft_strdup(&homepath[4])))
 		return (NULL);
     ft_strdel(&homepath);
     return (homeparse);
@@ -49,7 +49,7 @@ char 		*ms_getrootpath(t_env *shell)
     root = NULL;
     homepath = NULL;
     end = NULL;
-    if (!(homepath = ms_getenvar(shell, "HOME=", 5)))
+    if (!(homepath = ms_getenvar(shell, "HOME", 4)))
 		return (NULL);
     if (!(end = ft_strchr(homepath, '/')))
 		return (NULL);
@@ -71,7 +71,7 @@ char 		*ms_getenvar(t_env *shell, char *qry, size_t qlen)
 		return (NULL);
     while (shell->env[++i])
     {
-		if (ft_strncmp(shell->env[i], qry, qlen) == 0)
+		if (ft_strncmp(shell->env[i], qry, qlen) == 0 && shell->env[i][qlen] == '=')
 			if (!(res = ft_strdup(shell->env[i])))
 				return (NULL);
     }

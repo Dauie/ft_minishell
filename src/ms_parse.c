@@ -6,7 +6,7 @@
 /*   By: rlutt <rlutt@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 21:46:38 by rlutt             #+#    #+#             */
-/*   Updated: 2017/07/24 10:58:38 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/07/24 13:20:15 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	ms_reptilde(t_env *shell, char **av, int i)
 	char 	buff[G_MXDIRLEN];
 	char	*homepath;
 
-	if (!(homepath = ms_getenvar(shell, "HOME=", 5)))
+	if (!(homepath = ms_getenvar(shell, "HOME", 4)))
 		return (-1);
 	ft_strcpy(buff, &homepath[5]);
 	ft_strcat(buff, &av[i][1]);
@@ -82,7 +82,7 @@ int 	ms_countargs(char *cmdarg)
 	str = cmdarg;
 	while (ft_isspc(*str))
 		str++;
-	if (ft_isalnum(*str) || *str == '"' )
+	if (ft_isascii(*str) || *str == '"' )
 	{
 		i++;
 		str++;
@@ -163,7 +163,7 @@ char 		**ms_splitcmd(char *cmdarg)
 		return (NULL);
 	str = cmdarg;
 	*str == '"' ? res[i++] = ms_getquote(str) : (0);
-	ft_isalnum(*str) ? res[i++] = ms_getword(str) : (0);
+	ft_isascii(*str) ? res[i++] = ms_getword(str) : (0);
 	if (i > 0)
 		str++;
 	while (*str && i < ms_countargs(cmdarg))

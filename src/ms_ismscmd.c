@@ -6,7 +6,7 @@
 /*   By: rlutt <rlutt@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 12:06:06 by rlutt             #+#    #+#             */
-/*   Updated: 2017/06/27 09:46:20 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/07/24 12:08:11 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int		ms_ismscmd(char *command)
 		return (1);
 	else if (ft_strcmp(command, "unsetenv") == 0)
 		return (1);
+	else if (ft_strcmp(command, "clear") == 0)
+		return(1);
 	else
 		return (0);
 }
