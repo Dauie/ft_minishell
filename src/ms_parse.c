@@ -6,7 +6,7 @@
 /*   By: rlutt <rlutt@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 21:46:38 by rlutt             #+#    #+#             */
-/*   Updated: 2017/07/23 18:55:38 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/07/23 19:02:37 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,10 +164,11 @@ char 		**ms_splitcmd(char *cmdarg)
 		str++;
 	while (*str && i < ms_countargs(cmdarg))
 	{
-		while(ft_isspc(*str))
-			str++;
 		if (*str == '"' && ft_isspc(*(str - 1)))
+		{
 			res[i++] = ms_getquote(str);
+			str += ft_strlen(res[i - 1]);
+		}
 		else if (ft_isascii(*str) && ft_isspc(*(str - 1)))
 			res[i++] = ms_getword(str);
 		str++;
