@@ -6,7 +6,7 @@
 /*   By: rlutt <rlutt@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 21:02:08 by rlutt             #+#    #+#             */
-/*   Updated: 2017/07/24 14:41:17 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/07/24 20:06:21 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int			ms_run(t_cmd *info, t_env *shell)
 	if (ms_ismscmd(info->cmd) && *info->cmd)
 		ms_execmscmd(info, shell);
 	else if (*info->cmd)
-		ms_execextcmd(info, shell);
+		ms_execextcmd(info, shell->env, shell);
 	ms_cleancmd(info);
 	return (1);
 }

@@ -38,7 +38,7 @@ typedef enum s_error_code {
  	general_failure = -1,   
 	no_such_file = -2,
     access_denied = -3,
-	missing_quote = -4
+	missing_quote = -4,
 
 } t_errc;
 
@@ -75,7 +75,7 @@ void ms_getenv(t_env *shell, char **environ);
 int ms_parsecmd(t_cmd *info, t_env *shell);
 int ms_ismscmd(char *command);
 int ms_execmscmd(t_cmd *info, t_env *shell);
-int ms_execextcmd(t_cmd *info, t_env *shell);
+int ms_execextcmd(t_cmd *info, char **env, t_env *shell);
 int ms_echo(t_cmd *info);
 void ms_putenv(t_env *shell);
 void ms_putcurdir(t_env *shell);

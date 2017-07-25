@@ -6,13 +6,13 @@
 /*   By: rlutt <rlutt@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/20 15:11:25 by rlutt             #+#    #+#             */
-/*   Updated: 2017/07/19 22:13:36 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/07/24 20:19:40 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/minishell.h"
 
-int		ms_execextcmd(t_cmd *info, t_env *shell)
+int		ms_execextcmd(t_cmd *info, char **env, t_env *shell)
 {
 	info->child = fork();
 	if (info->child < 0)
@@ -29,7 +29,7 @@ int		ms_execextcmd(t_cmd *info, t_env *shell)
 	else if (info->child == 0)
 	{
 		ms_findexe(info, shell);
-		if (execve(info->cmd, info->av, shell->env) == -1)
+		if (execve(info->cmd, info->av, env) == -1)
 		{
 			ft_printf("%s: %s is an unknown command\n", G_PROJ, info->av[0]);
 			exit(EXIT_FAILURE);

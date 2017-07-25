@@ -6,7 +6,7 @@
 /*   By: rlutt <rlutt@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 15:49:45 by rlutt             #+#    #+#             */
-/*   Updated: 2017/07/24 17:02:32 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/07/24 17:40:23 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,8 @@ int		ms_cd(t_cmd *info, t_env *shell)
 	else
 		if (!(dir = ft_strdup(info->av[1])))
 			return (-1);
-	ft_printf("%s\n", dir);
-	if (access(dir, R_OK) == -1)
-		return(ms_error(access_denied, dir));
+	if (access(dir, F_OK) == -1)
+		return(ms_error(no_such_file, dir));
 	if ((chdir(dir) == -1))
 		ft_printf("cd: %s error changing directory\n", dir);
 	ms_cd_cleanup(shell, dir);
