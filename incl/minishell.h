@@ -63,6 +63,7 @@ typedef struct s_senv
     char		prevdir[G_MXDIRLEN];
     char		*homedir;
     char		*rootdir;
+	char		*util;
 } 				t_env;
 
 void ms_updatepwd(t_env *shell);

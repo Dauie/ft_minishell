@@ -6,7 +6,7 @@
 /*   By: rlutt <rlutt@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 21:02:08 by rlutt             #+#    #+#             */
-/*   Updated: 2017/07/21 16:23:08 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/07/24 14:41:17 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@ static void			ms_checkrfrsh(t_env *shell)
 {
 	if (shell->refrshdir == TRUE)
 	{
-		ms_getdirstak(shell);
+		if (ms_getdirstak(shell) < 0)
+			return ;
 		ms_updatepwd(shell);
 	}
 	ms_putcurdir(shell);

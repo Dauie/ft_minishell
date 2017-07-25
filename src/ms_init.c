@@ -6,7 +6,7 @@
 /*   By: rlutt <rlutt@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/20 15:32:50 by rlutt             #+#    #+#             */
-/*   Updated: 2017/07/24 11:32:09 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/07/24 17:21:07 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char 		*ms_gethome(t_env *shell)
     homepath = NULL;
     if (!(homepath = ms_getenvar(shell, "HOME", 4)))
 		return (NULL);
-    if (!(homeparse = ft_strdup(&homepath[4])))
+    if (!(homeparse = ft_strdup(&homepath[5])))
 		return (NULL);
     ft_strdel(&homepath);
     return (homeparse);
@@ -82,19 +82,29 @@ int			ms_getdirstak(t_env *shell)
 {
     char 	**dtmp;
     char 	**tmp;
-    int 	len;
 
-    len = 0;
     dtmp = shell->dirstak;
-    if (!(tmp = (char **)ft_strsplit(shell->curdir, '/')))
-		return -1;
-    len = (ft_tbllen(tmp) - 2);
-    if (!(shell->dirstak = ft_tbldup(&tmp[len], 2)))
-		return -1;
-    ft_tbldel(tmp, ft_tbllen(tmp));
-    if (dtmp)
-		ft_tbldel(dtmp, ft_tbllen(dtmp));
-    return (1);
+	tmp = NULL;
+	if (ft_strlen(shell->curdir) == 1 && shell->curdir[0] == '/')
+	{	
+		if (!(shell->util = ft_strdup("/")))
+			return (-1);
+		if (!(shell->dirstak = ft_tbldup(&shell->util, 1)))
+			return (-1);
+		ft_strdel(&shell->util);
+	}
+	else
+	{
+		if (!(tmp = (char **)ft_strsplit(shell->curdir, '/')))
+			return (-1);
+ 	   if (!(shell->dirstak = ft_tbldup(tmp, ft_tbllen(tmp))))
+			return (-1);
+    	
+	}
+	ft_tbldel(tmp, ft_tbllen(tmp));
+	if (dtmp)
+			ft_tbldel(dtmp, ft_tbllen(dtmp));
+	return (1);
 }
 
 static int ms_initenv(t_env *shell, char **environ)
@@ -123,7 +133,7 @@ int ms_init(t_cmd *info, t_env *shell, char **env)
     }
 	else
     {
-		ft_printf("(%s)\nv0.4\n", G_PROJ);
+		ft_printf("(%s)\nv0.7\n", G_PROJ);
 		return (1);
     }
 }
