@@ -6,7 +6,7 @@
 /*   By: rlutt <rlutt@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 16:24:19 by rlutt             #+#    #+#             */
-/*   Updated: 2017/07/22 11:48:16 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/07/25 14:56:53 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,19 @@ char			*ms_craft_newenv(const char *name, const char *value)
 	return (newenv);
 }
 
+int				ms_checkenvdup(t_env *shell, char *qry)
+{
+	char *tmp;
+
+	tmp = NULL;
+	if ((tmp = ms_getenvar(shell, qry, ft_strlen(qry))))
+	{
+		ft_strdel(&tmp);
+		return (1);
+	}
+	return (0);
+}
+
 int				ms_setenv(t_env *shell, t_cmd *info)
 {
 	char 		*newenv;
@@ -55,6 +68,8 @@ int				ms_setenv(t_env *shell, t_cmd *info)
 		ms_envchgstr_parse(info);
 	if (info->av[1] && info->av[2])
 	{
+		if (ms_checkenvdup(shell, info->av[1]))
+			return (ms_error(-5, info->av[1]));
 		if (!(newenv = ms_craft_newenv(info->av[1], info->av[2])))
 			return (-1);
 		if (!(shell->env = ft_tbladdl(shell->env, newenv)))
@@ -71,16 +86,18 @@ int				ms_setenv(t_env *shell, t_cmd *info)
 int 		ms_envchgstr_parse(t_cmd *info)
 {
 	char	**tmp;
+	char	**dtmp;
 
+	dtmp = NULL;
 	tmp = NULL;
 	if (ft_strchr(info->av[1], '='))
 	{
 		if (!(tmp = ft_strsplit(info->av[1], '=')))
 			return (ms_error(-1, NULL));
-		ft_strdel(&info->av[1]);
-		ft_strdel(&info->av[2]);
-		info->av[1] = tmp[0];
-		info->av[2] = tmp[1];
+		dtmp = info->av;
+		info->av = ft_crafttbl(3, info->av[0], tmp[0], tmp[1]);
+		if (dtmp)
+			ft_tbldel(dtmp, ft_tbllen(dtmp));
 	}
 	return (1);
 }

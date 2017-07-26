@@ -6,7 +6,7 @@
 /*   By: rlutt <rlutt@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 13:07:12 by rlutt             #+#    #+#             */
-/*   Updated: 2017/07/21 10:02:49 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/07/25 12:44:56 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,13 @@ void		ms_putcurdir(t_env *shell)
 int		ms_error(t_errc errcode, char *errstr)
 {
 	if (errcode == access_denied && errstr)
-		ft_printf("%s : access is denied\n" G_PROJ);
+		ft_printf("%s : access is denied.\n" G_PROJ);
 	else if (errcode == no_such_file)
 		ft_printf("cd: no such file or directory: %s\n", errstr);
 	else if (errcode == missing_quote)
-		ft_printf("%s: You have entered a quote ' \" ' but have not closed it. \n", G_PROJ);
+		ft_printf("%s: you have entered a quote ' \" ' but have not closed it. \n", G_PROJ);
+	else if (errcode == duplicate_env)
+		ft_printf("%s: %s environment variable is already set.\n", G_PROJ, errstr);
 	else
 		ft_printf("General Error\n");
 	return (errcode);

@@ -39,6 +39,7 @@ typedef enum s_error_code {
 	no_such_file = -2,
     access_denied = -3,
 	missing_quote = -4,
+	duplicate_env = -5
 
 } t_errc;
 

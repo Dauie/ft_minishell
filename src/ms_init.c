@@ -6,7 +6,7 @@
 /*   By: rlutt <rlutt@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/20 15:32:50 by rlutt             #+#    #+#             */
-/*   Updated: 2017/07/24 17:21:07 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/07/26 12:53:12 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,9 @@ static int ms_initenv(t_env *shell, char **environ)
 		return (-1);
     if (!(shell->env = ft_tbldup(environ, ft_tbllen(environ))))
 		return (-1);
+	if (! *shell->env)
+		if (!(shell->env = ft_crafttbl(4, "USER=", "PATH=", "HOME=", "TMPDIR=")))
+			return (-1);
     if (!(shell->homedir = ms_gethome(shell)))
 		return (-1);
     ft_strcpy(shell->prevdir, shell->curdir);
