@@ -6,7 +6,7 @@
 /*   By: rlutt <rlutt@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 15:37:02 by rlutt             #+#    #+#             */
-/*   Updated: 2017/07/24 20:33:23 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/07/26 16:55:46 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static int			ms_checkbin(char *bin, t_cmd *info)
 				return (-1);
 			ft_bzero(info->cmd, G_MXDIRLEN);
 			ft_strcpy(info->cmd, tmp);
+			ft_strdel(&tmp);
 			return (1);
 		}
 	}
@@ -42,9 +43,10 @@ int			ms_findexe(t_cmd *info, t_env *shell)
 
 	i = -1;
 	envpath = NULL;
+
 	if (!(envpath = ms_getenvar(shell, "PATH", 4)))
 		return (-1);
-	if (!(bins = ft_strsplit(envpath, ':')))
+	if (!(bins = ft_strsplit(&envpath[5], ':')))
 		return (-1);
 	while (bins[++i])
 	{

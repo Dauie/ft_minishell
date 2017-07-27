@@ -6,7 +6,7 @@
 /*   By: rlutt <rlutt@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 21:46:38 by rlutt             #+#    #+#             */
-/*   Updated: 2017/07/24 13:20:15 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/07/26 17:11:05 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,13 +89,14 @@ int 	ms_countargs(char *cmdarg)
 	}
 	while (*str)
 	{
-		if (*str == '"' && ((*str - 1) == 0 || (*str - 1) == ' '))
+		if (*str == '"' && ((*str - 1) == 0 || (*str - 1) == ' ') && (str + 1))
 		{
 			i++;
-			str = ft_strchr(str + 1, '"');
+			str = ft_strchr((str + 1), '"');
 		}
 		else if ( *str !=  ' ' && (*(str - 1) == ' ' || *(str - 1) == 0))
 			i++;
+		if (str + 1)
 		str++;
 	}
 return (i);

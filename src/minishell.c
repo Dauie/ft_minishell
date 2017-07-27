@@ -6,7 +6,7 @@
 /*   By: rlutt <rlutt@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 21:02:08 by rlutt             #+#    #+#             */
-/*   Updated: 2017/07/24 20:06:21 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/07/26 17:29:47 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,10 @@ static int			ms_run(t_cmd *info, t_env *shell)
 {
 	ms_checkrfrsh(shell);
 	if ((gnl(0, &info->util)) < 0)
+	{
+		ft_strdel(&info->util);
 		return (-1);
+	}
 	if ((shell->ret = ms_parsecmd(info, shell)) < 0)
 		return (0);
 	if (ms_ismscmd(info->cmd) && *info->cmd)
