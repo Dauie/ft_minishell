@@ -6,13 +6,13 @@
 /*   By: rlutt <rlutt@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 15:49:45 by rlutt             #+#    #+#             */
-/*   Updated: 2017/07/26 17:18:31 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/07/27 17:59:42 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/minishell.h"
 
-static void ms_cd_cleanup(t_env *shell, char **dir)
+static void		ms_cd_cleanup(t_env *shell, char **dir)
 {
 	ft_strcpy(shell->prevdir, shell->curdir);
 	ft_bzero(shell->curdir, G_MXDIRLEN);
@@ -21,9 +21,9 @@ static void ms_cd_cleanup(t_env *shell, char **dir)
 	ft_strdel(dir);
 }
 
-int		ms_cd(t_cmd *info, t_env *shell)
+int				ms_cd(t_cmd *info, t_env *shell)
 {
-	char	*dir;
+	char		*dir;
 
 	if (!(info->av[1]))
 	{
@@ -37,10 +37,12 @@ int		ms_cd(t_cmd *info, t_env *shell)
 			return (-1);
 	}
 	else
+	{
 		if (!(dir = ft_strdup(info->av[1])))
 			return (-1);
+	}
 	if (access(dir, F_OK) == -1)
-		return(ms_error(no_such_file, dir));
+		return (ms_error(no_such_file, dir));
 	if ((chdir(dir) == -1))
 		ft_printf("cd: %s error changing directory\n", dir);
 	ms_cd_cleanup(shell, &dir);

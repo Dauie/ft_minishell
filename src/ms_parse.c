@@ -6,50 +6,20 @@
 /*   By: rlutt <rlutt@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 21:46:38 by rlutt             #+#    #+#             */
-/*   Updated: 2017/07/26 17:11:05 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/07/27 19:06:51 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/minishell.h"
 
-static int	ms_reptilde(t_env *shell, char **av, int i)
-{
-	char 	buff[G_MXDIRLEN];
-	char	*homepath;
-
-	if (!(homepath = ms_getenvar(shell, "HOME", 4)))
-		return (-1);
-	ft_strcpy(buff, &homepath[5]);
-	ft_strcat(buff, &av[i][1]);
-	ft_strdel(&av[i]);
-	av[i] = ft_strdup(buff);
-	ft_strdel(&homepath);
-	return (0);
-}
-
-static int ms_repdolla(t_env *shell, char **argstr, int i)
-{
-	char *tmp;
-	int len;
-
-	tmp = NULL;
-	len = ft_strlen(&argstr[i][1]);
-	if (!(tmp = ms_getenvar(shell, &argstr[i][1], len)))
-		return (-1);
-	ft_strdel(&argstr[i]);
-	argstr[i] = ft_strdup(&tmp[len + 1]);
-	ft_strdel(&tmp);
-	return (0);
-}
-
 static void	ms_syntaxhelper(t_cmd *info, t_env *shell)
 {
-	int	i;
+	int		i;
 
 	i = -1;
 	while (info->av[++i])
 	{
-		if(info->av[i][0] == '~')
+		if (info->av[i][0] == '~')
 			ms_reptilde(shell, info->av, i);
 		else if (info->av[i][0] == '$')
 			ms_repdolla(shell, info->av, i);
@@ -59,13 +29,13 @@ static void	ms_syntaxhelper(t_cmd *info, t_env *shell)
 	return ;
 }
 
-int 	ms_verifycmd(t_cmd *info)
+int			ms_verifycmd(t_cmd *info)
 {
-	char *dtmp;
+	char	*dtmp;
 
 	dtmp = info->util;
 	if ((ms_checkquotes(info->util)) == -1)
-		return(ms_error(-4, NULL));
+		return (ms_error(-4, NULL));
 	if (!(info->util = ft_strtrim(info->util)))
 		return (-1);
 	if (dtmp)
@@ -73,7 +43,7 @@ int 	ms_verifycmd(t_cmd *info)
 	return (1);
 }
 
-int 	ms_countargs(char *cmdarg)
+static int	ms_countargs(char *cmdarg)
 {
 	size_t	i;
 	char	*str;
@@ -82,7 +52,7 @@ int 	ms_countargs(char *cmdarg)
 	str = cmdarg;
 	while (ft_isspc(*str))
 		str++;
-	if (ft_isascii(*str) || *str == '"' )
+	if (ft_isascii(*str) || *str == '"')
 	{
 		i++;
 		str++;
@@ -94,67 +64,17 @@ int 	ms_countargs(char *cmdarg)
 			i++;
 			str = ft_strchr((str + 1), '"');
 		}
-		else if ( *str !=  ' ' && (*(str - 1) == ' ' || *(str - 1) == 0))
+		else if (*str != ' ' && (*(str - 1) == ' ' || *(str - 1) == 0))
 			i++;
 		if (str + 1)
-		str++;
+			str++;
 	}
-return (i);
+	return (i);
 }
 
-char  *ms_getquote(char *cmdarg)
+char		**ms_splitcmd(char *cmdarg)
 {
-	int i;
-	char *tmp;
-	char *end;
-	char *res;
-	
-	i = -1;
-	end = NULL;
-	res = NULL;
-	tmp = cmdarg;
-	if (*tmp == '"')
-	{
-		tmp++;
-		end = ft_strchr(cmdarg + 1, '"');
-		if (!(res = ft_strnew(end - tmp)))
-			return (NULL);
-		while (*tmp && *tmp != '"')
-		{
-			res[++i] = *tmp;
-			tmp++;
-		}
-	}
-	return (res);
-}
-
-int 	ms_wordlen(char *cmdstr)
-{
-	int len;
-
-	len = 0;
-	while (cmdstr[len] && !ft_isspc(cmdstr[len]))
-		len++;
-	return (len);
-}
-
-
-char *ms_getword(char *cmdstr)
-{
-	char *res;
-	int i;
-
-	i = -1;
-	if (!(res = ft_strnew(ms_wordlen(cmdstr))))
-		return (NULL);
-	while (cmdstr[++i] && !ft_isspc(cmdstr[i]))
-		res[i] = cmdstr[i];
-	return (res);
-}
-
-char 		**ms_splitcmd(char *cmdarg)
-{
-	int 	i;
+	int		i;
 	char	**res;
 	char	*str;
 
@@ -178,16 +98,21 @@ char 		**ms_splitcmd(char *cmdarg)
 			res[i++] = ms_getword(str);
 		str++;
 	}
-	return(res);
+	return (res);
 }
 
-int		ms_parsecmd(t_cmd *info, t_env *shell)
+int			ms_parsecmd(t_cmd *info, t_env *shell)
 {
 	if (!(*info->util))
+	{
+		ft_strdel(&info->util);
 		return (0);
+	}
 	else
+	{
 		if ((ms_verifycmd(info)) < 0 || !(*info->util))
 			return (-1);
+	}
 	if (!(info->av = ms_splitcmd(info->util)))
 		return (ms_error(-1, NULL));
 	if (info->util)
@@ -198,4 +123,3 @@ int		ms_parsecmd(t_cmd *info, t_env *shell)
 		exit(1);
 	return (1);
 }
-

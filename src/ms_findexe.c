@@ -6,7 +6,7 @@
 /*   By: rlutt <rlutt@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 15:37:02 by rlutt             #+#    #+#             */
-/*   Updated: 2017/07/26 16:55:46 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/07/27 18:10:07 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,14 @@ static int			ms_checkbin(char *bin, t_cmd *info)
 	return (1);
 }
 
-int			ms_findexe(t_cmd *info, t_env *shell)
+int					ms_findexe(t_cmd *info, t_env *shell)
 {
-	char	**bins;
-	char	*envpath;
-	int		i;
+	char			**bins;
+	char			*envpath;
+	int				i;
 
 	i = -1;
 	envpath = NULL;
-
 	if (!(envpath = ms_getenvar(shell, "PATH", 4)))
 		return (-1);
 	if (!(bins = ft_strsplit(&envpath[5], ':')))
