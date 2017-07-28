@@ -6,7 +6,7 @@
 /*   By: rlutt <rlutt@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/21 15:19:14 by rlutt             #+#    #+#             */
-/*   Updated: 2017/07/27 18:03:48 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/07/27 19:38:06 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,24 @@ int			ms_echo(t_cmd *info)
 	}
 	ft_putchar('\n');
 	return (0);
+}
+
+int			ms_checkbadarg(char *argstr)
+{
+	int		i;
+	int		len;
+	int		cnt;
+
+	len = ft_strlen(argstr);
+	i = -1;
+	cnt = 0;
+	while (argstr[++i])
+	{
+		if (ft_isspc(argstr[i]))
+			cnt++;
+	}
+	if (cnt == len)
+		return (1);
+	else
+		return (0);
 }

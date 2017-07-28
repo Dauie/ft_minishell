@@ -6,7 +6,7 @@
 /*   By: rlutt <rlutt@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/18 21:46:38 by rlutt             #+#    #+#             */
-/*   Updated: 2017/07/27 19:06:51 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/07/27 19:36:55 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ char		**ms_splitcmd(char *cmdarg)
 
 int			ms_parsecmd(t_cmd *info, t_env *shell)
 {
-	if (!(*info->util))
+	if (!(*info->util) || ms_checkbadarg(info->util))
 	{
 		ft_strdel(&info->util);
 		return (0);
