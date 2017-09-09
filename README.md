@@ -7,4 +7,4 @@ SETENV & ENV. All other commands are found using the path and executed according
 Future iterations of my shell will include piping, redirection, and autocomplete.
 
 example:
-![example](https://github.com/Dauie/minishell/master/msss.png)
+![example](https://github.com/Dauie/ft_minishell/blob/master/msss.png)
