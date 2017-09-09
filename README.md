@@ -1,6 +1,6 @@
 ## Minishell
 
-This project's goal was to implement a basic shell in C using my libft.
+This project's goal was to implement a basic command-line shell in C using my libft.
 It's built in features include the following commands: CD, ECHO, UNSETENV,
 SETENV & ENV. All other commands are found using the path and executed accordingly.
 
