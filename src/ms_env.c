@@ -6,7 +6,7 @@
 /*   By: rlutt <rlutt@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 16:24:19 by rlutt             #+#    #+#             */
-/*   Updated: 2017/07/27 18:08:42 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/07/28 13:48:14 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,7 @@ int			ms_unsetenv(t_env *shell, t_cmd *info)
 		if (!(shell->env = ft_tblrmline(shell->env, info->av[1],
 			ft_tbllen(shell->env))))
 			return (-1);
-		if (dtmp)
-			ft_tbldel(dtmp, ft_tbllen(dtmp));
+		ft_tbldel(dtmp, ft_tbllen(dtmp));
 	}
 	return (1);
 }

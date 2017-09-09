@@ -6,7 +6,7 @@
 /*   By: rlutt <rlutt@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/27 19:16:28 by rlutt             #+#    #+#             */
-/*   Updated: 2017/07/27 19:37:22 by rlutt            ###   ########.fr       */
+/*   Updated: 2017/07/28 13:55:09 by rlutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ int				ms_unsetenv(t_env *shell, t_cmd *info);
 int				ms_setenv(t_env *shell, t_cmd *info);
 int				ms_findexe(t_cmd *info, t_env *shell);
 int				ms_checkquotes(char *argstr);
-int 			ms_checkbadarg(char *argstr);
-
+int				ms_checkbadarg(char *argstr);
 
 #endif
