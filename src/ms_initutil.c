@@ -88,8 +88,8 @@ int				ms_getdirstak(t_env *shell)
 		if (!(shell->dirstak = ft_tbldup(tmp, ft_tbllen(tmp))))
 			return (-1);
 	}
-	ft_tbldel(tmp, ft_tbllen(tmp));
+	ft_tbldel(&tmp);
 	if (dtmp)
-		ft_tbldel(dtmp, ft_tbllen(dtmp));
+		ft_tbldel(&dtmp);
 	return (1);
 }

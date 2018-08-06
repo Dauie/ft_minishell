@@ -15,7 +15,7 @@
 static void			ms_cleancmd(t_cmd *info)
 {
 	if (info->av)
-		ft_tbldel(info->av, ft_tbllen(info->av));
+		ft_tbldel(&info->av);
 	info->av = NULL;
 	ft_bzero(info->cmd, G_MXCMDLEN);
 }
@@ -23,13 +23,13 @@ static void			ms_cleancmd(t_cmd *info)
 static void			ms_close(t_cmd *info, t_env *shell)
 {
 	if (info->av)
-		ft_tbldel(info->av, ft_tbllen(info->av));
+		ft_tbldel(&info->av);
 	if (info->util)
 		ft_strdel(&info->util);
 	if (shell->env)
-		ft_tbldel(shell->env, ft_tbllen(shell->env));
+		ft_tbldel(&shell->env);
 	if (shell->dirstak)
-		ft_tbldel(shell->dirstak, ft_tbllen(shell->dirstak));
+		ft_tbldel(&shell->dirstak);
 }
 
 static void			ms_checkrfrsh(t_env *shell)

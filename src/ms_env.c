@@ -25,8 +25,8 @@ int			ms_envchgstr_parse(t_cmd *info)
 			return (ms_error(-1, NULL));
 		dtmp = info->av;
 		info->av = ft_crafttbl(3, info->av[0], tmp[0], tmp[1]);
-		ft_tbldel(dtmp, ft_tbllen(dtmp));
-		ft_tbldel(tmp, ft_tbllen(tmp));
+		ft_tbldel(&dtmp);
+		ft_tbldel(&tmp);
 	}
 	return (1);
 }
@@ -41,7 +41,7 @@ int			ms_unsetenv(t_env *shell, t_cmd *info)
 		if (!(shell->env = ft_tblrmline(shell->env, info->av[1],
 			ft_tbllen(shell->env))))
 			return (-1);
-		ft_tbldel(dtmp, ft_tbllen(dtmp));
+		ft_tbldel(&dtmp);
 	}
 	return (1);
 }
@@ -91,7 +91,7 @@ int			ms_setenv(t_env *shell, t_cmd *info)
 		if (!(shell->env = ft_tbladdl(shell->env, newenv)))
 			return (-1);
 		if (dtmp)
-			ft_tbldel(dtmp, ft_tbllen(dtmp));
+			ft_tbldel(&dtmp);
 		ft_strdel(&newenv);
 		shell->refrshenv = TRUE;
 	}

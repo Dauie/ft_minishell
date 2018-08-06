@@ -53,6 +53,6 @@ int					ms_findexe(t_cmd *info, t_env *shell)
 			continue ;
 	}
 	ft_strdel(&envpath);
-	ft_tbldel(bins, ft_tbllen(bins));
+	ft_tbldel(&bins);
 	return (1);
 }
