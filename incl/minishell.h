@@ -45,16 +45,16 @@ typedef struct	s_cmd
 	char		*util;
 	pid_t		child;
 	int			status;
-	t_blean		uflg;
+	t_bool		uflg;
 	char		cmd[G_MXCMDLEN];
 }				t_cmd;
 
 typedef struct	s_senv
 {
 	char		**env;
-	t_blean		refrshenv;
+	t_bool		refrshenv;
 	char		**dirstak;
-	t_blean		refrshdir;
+	t_bool		refrshdir;
 	int			ret;
 	char		curdir[G_MXDIRLEN];
 	char		prevdir[G_MXDIRLEN];
